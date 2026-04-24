@@ -1195,7 +1195,7 @@ function notifyWA(id) {
   const b = bookings.find(b => b.id === id);
   if (!b) return;
   // Use the stored phone (already formatted)
-  const msg = encodeURIComponent(`Hi ${b.fname}! ✨ Your appointment with Nails by Rey is confirmed for ${b.date} at ${b.time}. Service: ${b.service.split(' —')[0]}. See you soon! — Rey 💅`);
+  const msg = encodeURIComponent(`Hi ${b.fname}! ✨ Your appointment with Nails by Rey is ${b.status} for ${b.date} at ${b.time}. Service: ${b.service.split(' —')[0]}. See you soon! — Rey 💅`);
   window.open(`https://wa.me/${b.phone.replace(/\D/g,'')}?text=${msg}`, '_blank');
 }
 
