@@ -2,7 +2,7 @@
 
 > A fully responsive small business website built for **Vive Reytchel (Nails by Rey)**, a professional nail technician based in Kajang, Selangor. Built with pure HTML, CSS, and vanilla JavaScript — no frameworks, no dependencies.
 
-🔗 **Live Demo:** [samoliverareh.github.io/nailsbyrey-website](https://samoliverareh.github.io/nailsbyrey-website)
+🔗 **Live Demo:** [samoliverareh.github.io/nailsbyrey.com](https://samoliverareh.github.io/nailsbyrey.com)
 
 ---
 
