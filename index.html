@@ -24,6 +24,37 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
 
+  /* ── SCROLL REVEAL SYSTEM ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.reveal-left  { transform: translateX(-40px); }
+  .reveal.reveal-right { transform: translateX(40px); }
+  .reveal.reveal-scale { transform: scale(0.92); }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+  .reveal-delay-6 { transition-delay: 0.6s; }
+
+  /* ── NAV SCROLL SHRINK ── */
+  nav { transition: height 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
+  nav.scrolled {
+    height: 52px;
+    box-shadow: 0 2px 20px rgba(42,31,31,0.08);
+    background: rgba(253,246,240,0.97);
+  }
+
+  /* ── SMOOTH PARALLAX HERO ── */
+  .hero-content { transition: transform 0.1s linear; }
+
   /* NAV */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
@@ -213,6 +244,39 @@
   .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--rose-dark); color: white; padding: 0.9rem 1.5rem; border-radius: 10px; font-size: 0.85rem; box-shadow: 0 8px 30px rgba(0,0,0,0.2); transform: translateY(80px); opacity: 0; transition: all 0.3s; z-index: 999; }
   .toast.show { transform: translateY(0); opacity: 1; }
 
+  /* ADMIN LOGIN GATE */
+  .admin-gate { text-align: center; padding: 3rem 1rem; }
+  .admin-gate h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: white; margin-bottom: 0.5rem; }
+  .admin-gate p { color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-bottom: 1.5rem; }
+  .admin-gate input { padding: 0.65rem 1rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; width: 240px; margin-right: 0.5rem; letter-spacing: 0.1em; }
+  .admin-gate button { padding: 0.65rem 1.4rem; background: var(--rose-dark); color: white; border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; cursor: pointer; }
+  .admin-gate .gate-error { color: #f5a0a0; font-size: 0.8rem; margin-top: 0.6rem; display: none; }
+
+  /* GALLERY MANAGER */
+  .gallery-upload-zone {
+    border: 2px dashed rgba(255,255,255,0.15); border-radius: 14px; padding: 2.5rem;
+    text-align: center; cursor: pointer; transition: border-color 0.2s; margin-bottom: 1.5rem;
+  }
+  .gallery-upload-zone:hover, .gallery-upload-zone.dragover { border-color: var(--rose); }
+  .gallery-upload-zone input[type=file] { display: none; }
+  .upload-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+  .upload-label { font-size: 0.88rem; color: rgba(255,255,255,0.5); }
+  .upload-label span { color: var(--rose); text-decoration: underline; cursor: pointer; }
+  .upload-meta { display: flex; gap: 0.8rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center; }
+  .upload-meta input, .upload-meta select { padding: 0.55rem 0.9rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; flex: 1; min-width: 120px; }
+  .upload-meta input::placeholder { color: rgba(255,255,255,0.3); }
+  .upload-meta select option { background: #2a1f1f; }
+  .upload-preview { width: 80px; height: 80px; border-radius: 8px; object-fit: cover; border: 1px solid rgba(255,255,255,0.15); display: none; }
+  .gallery-mgr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+  .gallery-mgr-item { position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 1; background: rgba(255,255,255,0.05); }
+  .gallery-mgr-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-mgr-info { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); padding: 0.4rem 0.6rem; }
+  .gallery-mgr-name { font-size: 0.72rem; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .gallery-mgr-tag { font-size: 0.65rem; color: var(--rose); }
+  .gallery-mgr-del { position: absolute; top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 50%; background: rgba(180,50,50,0.85); color: white; border: none; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
+  .gallery-mgr-item:hover .gallery-mgr-del { opacity: 1; }
+  .gallery-mgr-empty { color: rgba(255,255,255,0.3); font-size: 0.88rem; text-align: center; padding: 2rem; }
+
   @media (max-width: 768px) {
     nav { padding: 0 1.2rem; }
     .nav-links { display: none; }
@@ -239,12 +303,14 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div>
-    <div class="hero-badge">✦ Professional Nail Artist · Kajang, Selangor</div>
-    <h1>Nails<br><em>by Rey</em></h1>
-    <p class="hero-sub">Artisan nail care by Vive Reytchel — where every set is a tiny masterpiece crafted just for you.</p>
-    <a href="#booking" class="btn btn-primary">Book a Session</a>
-    <a href="#gallery" class="btn btn-outline">View Gallery</a>
+  <div class="hero-content">
+    <div class="hero-badge reveal">✦ Professional Nail Artist · Kajang, Selangor</div>
+    <h1 class="reveal reveal-delay-1">Nails<br><em>by Rey</em></h1>
+    <p class="hero-sub reveal reveal-delay-2">Artisan nail care by Vive Reytchel — where every set is a tiny masterpiece crafted just for you.</p>
+    <div class="reveal reveal-delay-3">
+      <a href="#booking" class="btn btn-primary">Book a Session</a>
+      <a href="#gallery" class="btn btn-outline">View Gallery</a>
+    </div>
   </div>
 </section>
 
@@ -269,11 +335,11 @@
 <section id="gallery">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">Portfolio</div>
-      <h2 class="section-title">The Gallery</h2>
-      <p class="section-desc">A curated collection of sets — each one unique, intentional, and made with love.</p>
+      <div class="section-label reveal">Portfolio</div>
+      <h2 class="section-title reveal reveal-delay-1">The Gallery</h2>
+      <p class="section-desc reveal reveal-delay-2">A curated collection of sets — each one unique, intentional, and made with love.</p>
     </div>
-    <div class="gallery-filter">
+    <div class="gallery-filter reveal reveal-delay-3">
       <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
       <button class="filter-btn" onclick="filterGallery('gel', this)">Gel</button>
       <button class="filter-btn" onclick="filterGallery('acrylic', this)">Acrylic</button>
@@ -291,12 +357,12 @@
 <section id="pricing">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">Services & Rates</div>
-      <h2 class="section-title">Pricing Library</h2>
-      <p class="section-desc">Transparent pricing for every service. All sets include nail prep, cuticle care & aftercare advice.</p>
+      <div class="section-label reveal">Services & Rates</div>
+      <h2 class="section-title reveal reveal-delay-1">Pricing Library</h2>
+      <p class="section-desc reveal reveal-delay-2">Transparent pricing for every service. All sets include nail prep, cuticle care & aftercare advice.</p>
     </div>
     <div class="pricing-grid">
-      <div class="pricing-card">
+      <div class="pricing-card reveal reveal-delay-1">
         <div class="pricing-icon">💅</div>
         <div class="pricing-name">Manicure</div>
         <div class="pricing-desc">Classic manicure — nail shaping, cuticle care and a clean finish.</div>
@@ -309,7 +375,7 @@
           <li>Quick & affordable</li>
         </ul>
       </div>
-      <div class="pricing-card featured">
+      <div class="pricing-card featured reveal reveal-delay-2">
         <div class="featured-badge">✦ Most Popular</div>
         <div class="pricing-icon">✨</div>
         <div class="pricing-name">Manicure + Gel</div>
@@ -324,7 +390,7 @@
         </ul>
         <div class="discount-tag">New clients save 10%</div>
       </div>
-      <div class="pricing-card">
+      <div class="pricing-card reveal reveal-delay-3">
         <div class="pricing-icon">💎</div>
         <div class="pricing-name">Add-on: Extensions</div>
         <div class="pricing-desc">Nail tip extensions for extra length — priced per piece.</div>
@@ -337,7 +403,7 @@
           <li>Add to any service</li>
         </ul>
       </div>
-      <div class="pricing-card">
+      <div class="pricing-card reveal reveal-delay-4">
         <div class="pricing-icon">🌸</div>
         <div class="pricing-name">Add-on: Nail Art</div>
         <div class="pricing-desc">Hand-painted nail art, cat eye, or French design — stunning accent nails or full sets.</div>
@@ -350,7 +416,7 @@
           <li>Price varies by complexity</li>
         </ul>
       </div>
-      <div class="pricing-card">
+      <div class="pricing-card reveal reveal-delay-5">
         <div class="pricing-icon">🔧</div>
         <div class="pricing-name">Gel Removal</div>
         <div class="pricing-desc">Safe and gentle gel removal without damaging your natural nails.</div>
@@ -371,9 +437,9 @@
 <section id="discounts">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">Current Offers</div>
-      <h2 class="section-title" style="color:white;">Special Deals</h2>
-      <p class="section-desc" style="color:rgba(255,255,255,0.65);margin:0 auto;">Exclusive discounts and seasonal offers — share your code when booking.</p>
+      <div class="section-label reveal">Current Offers</div>
+      <h2 class="section-title reveal reveal-delay-1" style="color:white;">Special Deals</h2>
+      <p class="section-desc reveal reveal-delay-2" style="color:rgba(255,255,255,0.65);margin:0 auto;">Exclusive discounts and seasonal offers — share your code when booking.</p>
     </div>
     <div class="discounts-grid" id="discountsGrid">
       <!-- populated by JS -->
@@ -385,12 +451,12 @@
 <section id="booking">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">Appointments</div>
-      <h2 class="section-title">Book a Session</h2>
-      <p class="section-desc">Fill in the form below — Rey will confirm your slot via WhatsApp or email within a few hours.</p>
+      <div class="section-label reveal">Appointments</div>
+      <h2 class="section-title reveal reveal-delay-1">Book a Session</h2>
+      <p class="section-desc reveal reveal-delay-2">Fill in the form below — Rey will confirm your slot via WhatsApp or email within a few hours.</p>
     </div>
     <div class="booking-wrap">
-      <div class="booking-info">
+      <div class="booking-info reveal reveal-left">
         <h3>How It Works</h3>
         <p>Booking takes under 2 minutes. After you submit, you'll receive a confirmation notification with all the details.</p>
         <div class="booking-steps">
@@ -404,7 +470,7 @@
           <div class="notif-msg">"Hi [Name]! ✨ Your appointment with Nails by Rey is confirmed for [Date] at [Time]. Service: [Service]. Please reply to reschedule if needed. See you soon! — Rey 💅"</div>
         </div>
       </div>
-      <div>
+      <div class="reveal reveal-right">
         <div class="booking-form" id="bookingForm">
           <div class="form-row">
             <div class="form-group">
@@ -484,55 +550,104 @@
       <div class="section-label">Management</div>
       <h2 class="section-title">Admin Dashboard</h2>
     </div>
-    <div class="admin-stats">
-      <div class="admin-stat"><div class="admin-stat-val" id="stat-total">0</div><div class="admin-stat-label">Total Bookings</div></div>
-      <div class="admin-stat"><div class="admin-stat-val" id="stat-confirmed">0</div><div class="admin-stat-label">Confirmed</div></div>
-      <div class="admin-stat"><div class="admin-stat-val" id="stat-pending">0</div><div class="admin-stat-label">Pending</div></div>
-      <div class="admin-stat"><div class="admin-stat-val" id="stat-revenue">RM 0</div><div class="admin-stat-label">Est. Revenue</div></div>
-    </div>
-    <div class="admin-tabs">
-      <button class="admin-tab active" onclick="switchTab('bookings', this)">Bookings</button>
-      <button class="admin-tab" onclick="switchTab('customers', this)">Customers</button>
-      <button class="admin-tab" onclick="switchTab('discounts-admin', this)">Discounts</button>
-    </div>
 
-    <!-- BOOKINGS TAB -->
-    <div class="admin-panel active" id="tab-bookings">
-      <div class="admin-search">
-        <input type="text" placeholder="Search by name, service, date..." oninput="searchBookings(this.value)" id="bookingSearch">
+    <!-- LOGIN GATE -->
+    <div id="adminGate" class="admin-gate">
+      <h3>🔐 Admin Access</h3>
+      <p>Enter the admin password to manage bookings, gallery and discounts.</p>
+      <div>
+        <input type="password" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter')checkAdminPw()">
+        <button onclick="checkAdminPw()">Enter</button>
       </div>
-      <table class="admin-table" id="bookingsTable">
-        <thead><tr>
-          <th>Customer</th><th>Service</th><th>Date & Time</th><th>Contact</th><th>Status</th><th>Actions</th>
-        </tr></thead>
-        <tbody id="bookingsTbody"></tbody>
-      </table>
+      <div class="gate-error" id="gateError">Incorrect password. Try again.</div>
+      <p style="margin-top:1.2rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Default password: <code style="color:var(--rose)">nailsbyrey2025</code> — change this in the code before publishing.</p>
     </div>
 
-    <!-- CUSTOMERS TAB -->
-    <div class="admin-panel" id="tab-customers">
-      <table class="admin-table">
-        <thead><tr>
-          <th>Name</th><th>Phone</th><th>Email</th><th>Visits</th><th>Last Service</th><th>Total Spent</th>
-        </tr></thead>
-        <tbody id="customersTbody"></tbody>
-      </table>
-    </div>
-
-    <!-- DISCOUNTS ADMIN TAB -->
-    <div class="admin-panel" id="tab-discounts-admin">
-      <div class="discount-form">
-        <input type="text" placeholder="Code e.g. BDAY20" id="dc-code">
-        <input type="text" placeholder="Label e.g. Birthday Deal" id="dc-label">
-        <select id="dc-pct">
-          <option>5%</option><option>10%</option><option>15%</option><option>20%</option><option>30%</option>
-        </select>
-        <button class="admin-add-btn" onclick="addDiscount()">+ Add</button>
+    <!-- DASHBOARD (hidden until logged in) -->
+    <div id="adminDash" style="display:none;">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+        <button class="admin-action" onclick="logoutAdmin()">Log out</button>
       </div>
-      <table class="admin-table">
-        <thead><tr><th>Code</th><th>Label</th><th>Discount</th><th>Used</th><th>Actions</th></tr></thead>
-        <tbody id="discountsTbody"></tbody>
-      </table>
+      <div class="admin-stats">
+        <div class="admin-stat"><div class="admin-stat-val" id="stat-total">0</div><div class="admin-stat-label">Total Bookings</div></div>
+        <div class="admin-stat"><div class="admin-stat-val" id="stat-confirmed">0</div><div class="admin-stat-label">Confirmed</div></div>
+        <div class="admin-stat"><div class="admin-stat-val" id="stat-pending">0</div><div class="admin-stat-label">Pending</div></div>
+        <div class="admin-stat"><div class="admin-stat-val" id="stat-revenue">RM 0</div><div class="admin-stat-label">Est. Revenue</div></div>
+        <div class="admin-stat"><div class="admin-stat-val" id="stat-photos">0</div><div class="admin-stat-label">Gallery Photos</div></div>
+      </div>
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchTab('bookings', this)">Bookings</button>
+        <button class="admin-tab" onclick="switchTab('customers', this)">Customers</button>
+        <button class="admin-tab" onclick="switchTab('gallery-mgr', this)">Gallery</button>
+        <button class="admin-tab" onclick="switchTab('discounts-admin', this)">Discounts</button>
+      </div>
+
+      <!-- BOOKINGS TAB -->
+      <div class="admin-panel active" id="tab-bookings">
+        <div class="admin-search">
+          <input type="text" placeholder="Search by name, service, date..." oninput="searchBookings(this.value)" id="bookingSearch">
+        </div>
+        <table class="admin-table" id="bookingsTable">
+          <thead><tr>
+            <th>Customer</th><th>Service</th><th>Date & Time</th><th>Contact</th><th>Status</th><th>Actions</th>
+          </tr></thead>
+          <tbody id="bookingsTbody"></tbody>
+        </table>
+      </div>
+
+      <!-- CUSTOMERS TAB -->
+      <div class="admin-panel" id="tab-customers">
+        <table class="admin-table">
+          <thead><tr>
+            <th>Name</th><th>Phone</th><th>Email</th><th>Visits</th><th>Last Service</th><th>Total Spent</th>
+          </tr></thead>
+          <tbody id="customersTbody"></tbody>
+        </table>
+      </div>
+
+      <!-- GALLERY MANAGER TAB -->
+      <div class="admin-panel" id="tab-gallery-mgr">
+        <div class="gallery-upload-zone" id="uploadZone" onclick="document.getElementById('photoInput').click()" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
+          <input type="file" id="photoInput" accept="image/*" multiple onchange="handleFileSelect(this.files)">
+          <div class="upload-icon">📷</div>
+          <div class="upload-label">Drag & drop photos here or <span>browse files</span></div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:0.4rem;">JPG, PNG, WEBP · Multiple files supported</div>
+        </div>
+        <div class="upload-meta" id="uploadMeta" style="display:none;">
+          <img id="uploadPreview" class="upload-preview">
+          <input type="text" id="photoTitle" placeholder="Title e.g. Cherry Blossom Set">
+          <select id="photoTag">
+            <option value="nail-art">Nail Art</option>
+            <option value="gel">Gel</option>
+            <option value="french">French</option>
+            <option value="ombre">Ombré</option>
+            <option value="acrylic">Acrylic</option>
+          </select>
+          <button class="admin-add-btn" onclick="savePhoto()">Upload to Gallery</button>
+          <button class="admin-action" onclick="cancelUpload()" style="padding:0.6rem 1rem;">Cancel</button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);" id="galleryMgrCount"></div>
+          <button class="admin-action" onclick="clearAllPhotos()" style="font-size:0.72rem;">Clear All</button>
+        </div>
+        <div class="gallery-mgr-grid" id="galleryMgrGrid"></div>
+      </div>
+
+      <!-- DISCOUNTS ADMIN TAB -->
+      <div class="admin-panel" id="tab-discounts-admin">
+        <div class="discount-form">
+          <input type="text" placeholder="Code e.g. BDAY20" id="dc-code">
+          <input type="text" placeholder="Label e.g. Birthday Deal" id="dc-label">
+          <select id="dc-pct">
+            <option>5%</option><option>10%</option><option>15%</option><option>20%</option><option>30%</option>
+          </select>
+          <button class="admin-add-btn" onclick="addDiscount()">+ Add</button>
+        </div>
+        <table class="admin-table">
+          <thead><tr><th>Code</th><th>Label</th><th>Discount</th><th>Used</th><th>Actions</th></tr></thead>
+          <tbody id="discountsTbody"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
@@ -560,31 +675,70 @@ let discountsData = [
   { code: 'LOYAL30', label: 'Loyal Customer (5+ visits)', pct: '30%', used: 2 },
 ];
 
-const galleryItems = [
-  { tag: 'nail-art', label: 'Cherry Blossom', emoji: '🌸', bg: '#faeaea' },
-  { tag: 'gel', label: 'Coral Glaze', emoji: '🧡', bg: '#fff0e6' },
-  { tag: 'ombre', label: 'Rose Ombré', emoji: '🌅', bg: '#fce4ec' },
-  { tag: 'french', label: 'Modern French', emoji: '🤍', bg: '#f5f5f5' },
-  { tag: 'nail-art', label: 'Abstract Art', emoji: '🎨', bg: '#e8f4fd' },
-  { tag: 'acrylic', label: 'Nude Almond', emoji: '🍂', bg: '#fdf3e3' },
-  { tag: 'gel', label: 'Berry Dream', emoji: '🫐', bg: '#ede7f6' },
-  { tag: 'nail-art', label: 'Butterfly Wings', emoji: '🦋', bg: '#e1f5fe' },
-  { tag: 'ombre', label: 'Lavender Fade', emoji: '💜', bg: '#f3e5f5' },
-  { tag: 'french', label: 'Gold Tips', emoji: '✨', bg: '#fffde7' },
-  { tag: 'acrylic', label: 'Stiletto Set', emoji: '💅', bg: '#fce4ec' },
-  { tag: 'gel', label: 'Green Forest', emoji: '🌿', bg: '#e8f5e9' },
+const ADMIN_PASSWORD = 'nailsbyrey2025';
+
+// ─── ADMIN LOGIN ───────────────────────────────────────────
+function checkAdminPw() {
+  const val = document.getElementById('adminPwInput').value;
+  if (val === ADMIN_PASSWORD) {
+    document.getElementById('adminGate').style.display = 'none';
+    document.getElementById('adminDash').style.display = 'block';
+    sessionStorage.setItem('nbrAdmin', '1');
+    updateAdminStats(); renderBookingsTable(); renderCustomersTable(); renderDiscountsTable(); renderGalleryManager();
+  } else {
+    document.getElementById('gateError').style.display = 'block';
+  }
+}
+function logoutAdmin() {
+  sessionStorage.removeItem('nbrAdmin');
+  document.getElementById('adminGate').style.display = 'block';
+  document.getElementById('adminDash').style.display = 'none';
+  document.getElementById('adminPwInput').value = '';
+}
+if (sessionStorage.getItem('nbrAdmin')) {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('adminGate').style.display = 'none';
+    document.getElementById('adminDash').style.display = 'block';
+  });
+}
+
+// ─── GALLERY DATA (localStorage) ──────────────────────────
+const PLACEHOLDER_ITEMS = [
+  { id: 'p1', tag: 'nail-art', label: 'Cherry Blossom', emoji: '🌸', bg: '#faeaea', isPlaceholder: true },
+  { id: 'p2', tag: 'gel', label: 'Coral Glaze', emoji: '🧡', bg: '#fff0e6', isPlaceholder: true },
+  { id: 'p3', tag: 'ombre', label: 'Rose Ombré', emoji: '🌅', bg: '#fce4ec', isPlaceholder: true },
+  { id: 'p4', tag: 'french', label: 'Modern French', emoji: '🤍', bg: '#f5f5f5', isPlaceholder: true },
+  { id: 'p5', tag: 'nail-art', label: 'Abstract Art', emoji: '🎨', bg: '#e8f4fd', isPlaceholder: true },
+  { id: 'p6', tag: 'acrylic', label: 'Nude Almond', emoji: '🍂', bg: '#fdf3e3', isPlaceholder: true },
 ];
 
-// ─── GALLERY ───────────────────────────────────────────────
+function loadGalleryPhotos() {
+  try { return JSON.parse(localStorage.getItem('nbr_gallery') || '[]'); } catch { return []; }
+}
+function saveGalleryPhotos(photos) {
+  try { localStorage.setItem('nbr_gallery', JSON.stringify(photos)); } catch { showToast('Storage full — try smaller images'); }
+}
+
+// ─── GALLERY (public) ──────────────────────────────────────
 function renderGallery(filter = 'all') {
   const grid = document.getElementById('galleryGrid');
-  const items = filter === 'all' ? galleryItems : galleryItems.filter(i => i.tag === filter);
-  grid.innerHTML = items.map(i => `
+  const uploaded = loadGalleryPhotos();
+  const combined = [...uploaded, ...PLACEHOLDER_ITEMS];
+  const items = filter === 'all' ? combined : combined.filter(i => i.tag === filter);
+  grid.innerHTML = items.map(i => i.isPlaceholder ? `
     <div class="gallery-item" style="background:${i.bg}">
       <div class="gallery-item-inner">
         <div class="gallery-nail-art">${i.emoji}</div>
         <div class="gallery-tag">${i.tag}</div>
       </div>
+      <div class="gallery-overlay">
+        <div class="gallery-overlay-title">${i.label}</div>
+        <div class="gallery-overlay-tag">${i.tag}</div>
+      </div>
+    </div>
+  ` : `
+    <div class="gallery-item">
+      <img src="${i.dataUrl}" alt="${i.label}" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="gallery-overlay">
         <div class="gallery-overlay-title">${i.label}</div>
         <div class="gallery-overlay-tag">${i.tag}</div>
@@ -597,6 +751,110 @@ function filterGallery(tag, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderGallery(tag);
+}
+
+// ─── GALLERY MANAGER (admin) ───────────────────────────────
+let pendingFiles = [];
+let pendingIndex = 0;
+
+function handleFileSelect(files) {
+  if (!files.length) return;
+  pendingFiles = Array.from(files);
+  pendingIndex = 0;
+  loadNextPending();
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.remove('dragover');
+  handleFileSelect(e.dataTransfer.files);
+}
+
+function loadNextPending() {
+  if (pendingIndex >= pendingFiles.length) return;
+  const file = pendingFiles[pendingIndex];
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const preview = document.getElementById('uploadPreview');
+    preview.src = e.target.result;
+    preview.style.display = 'block';
+    document.getElementById('uploadMeta').style.display = 'flex';
+    document.getElementById('photoTitle').value = file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+    document.getElementById('uploadZone').style.display = 'none';
+    preview._dataUrl = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function savePhoto() {
+  const title = document.getElementById('photoTitle').value.trim() || 'Untitled';
+  const tag = document.getElementById('photoTag').value;
+  const dataUrl = document.getElementById('uploadPreview')._dataUrl;
+  if (!dataUrl) return;
+  const photos = loadGalleryPhotos();
+  photos.unshift({ id: 'u' + Date.now(), label: title, tag, dataUrl });
+  saveGalleryPhotos(photos);
+  pendingIndex++;
+  if (pendingIndex < pendingFiles.length) {
+    loadNextPending();
+    showToast(`Saved! ${pendingFiles.length - pendingIndex} more to go.`);
+  } else {
+    cancelUpload();
+    showToast('Photo(s) added to gallery ✦');
+  }
+  renderGallery();
+  renderGalleryManager();
+  updateAdminStats();
+}
+
+function cancelUpload() {
+  pendingFiles = []; pendingIndex = 0;
+  document.getElementById('uploadMeta').style.display = 'none';
+  document.getElementById('uploadZone').style.display = 'block';
+  document.getElementById('uploadPreview').style.display = 'none';
+  document.getElementById('photoTitle').value = '';
+  document.getElementById('photoInput').value = '';
+}
+
+function deletePhoto(id) {
+  const photos = loadGalleryPhotos().filter(p => p.id !== id);
+  saveGalleryPhotos(photos);
+  renderGallery();
+  renderGalleryManager();
+  updateAdminStats();
+  showToast('Photo removed');
+}
+
+function clearAllPhotos() {
+  if (!confirm('Remove all uploaded photos? Placeholder gallery will remain.')) return;
+  saveGalleryPhotos([]);
+  renderGallery();
+  renderGalleryManager();
+  updateAdminStats();
+  showToast('Gallery cleared');
+}
+
+function renderGalleryManager() {
+  const photos = loadGalleryPhotos();
+  const grid = document.getElementById('galleryMgrGrid');
+  const count = document.getElementById('galleryMgrCount');
+  if (!grid) return;
+  count.textContent = `${photos.length} uploaded photo${photos.length !== 1 ? 's' : ''}`;
+  document.getElementById('stat-photos').textContent = photos.length;
+  if (!photos.length) {
+    grid.innerHTML = '<div class="gallery-mgr-empty">No photos uploaded yet. Use the upload zone above to add real nail photos.</div>';
+    return;
+  }
+  grid.innerHTML = photos.map(p => `
+    <div class="gallery-mgr-item">
+      <img src="${p.dataUrl}" alt="${p.label}">
+      <div class="gallery-mgr-info">
+        <div class="gallery-mgr-name">${p.label}</div>
+        <div class="gallery-mgr-tag">${p.tag}</div>
+      </div>
+      <button class="gallery-mgr-del" onclick="deletePhoto('${p.id}')" title="Remove">✕</button>
+    </div>
+  `).join('');
 }
 
 // ─── DISCOUNTS ─────────────────────────────────────────────
@@ -764,11 +1022,13 @@ function showToast(msg) {
 // ─── INIT ──────────────────────────────────────────────────
 renderGallery();
 renderDiscountsSection();
-renderBookingsTable();
-renderCustomersTable();
-renderDiscountsTable();
 updateAdminStats();
 document.getElementById('bdate').min = new Date().toISOString().split('T')[0];
+if (sessionStorage.getItem('nbrAdmin')) {
+  document.getElementById('adminGate').style.display = 'none';
+  document.getElementById('adminDash').style.display = 'block';
+  renderBookingsTable(); renderCustomersTable(); renderDiscountsTable(); renderGalleryManager();
+}
 </script>
 </body>
 </html>
