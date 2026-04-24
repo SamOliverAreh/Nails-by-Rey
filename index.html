@@ -711,7 +711,9 @@
 // ═══════════════════════════════════════════════════════
 //  CONFIG
 // ═══════════════════════════════════════════════════════
-const REMOTE_SYNC_URL = 'https://script.google.com/macros/s/AKfycbwlweI1XITt_nT9Kqs4aL_ncYSqm7pE4H46vdANDBtc0dkUALe__krPR_n3wC8OuVB_/exec';  // ← Paste Google Apps Script web app URL here for cross‑device sync
+const API_KEY = 'AIzaSyCSof22kUg19D6wdd0PYXmUPkA71x-sFhU';   // ← Paste your API key here
+const SPREADSHEET_ID = '1nbQzt6TzZ4fi0mt1_v4sAsOO9ZIFyMHiGWUz61NVz7s';
+
 const ADMIN_PASSWORD = 'nailsbyrey2025';
 const ADMIN_WA = '60176445338';
 
@@ -730,48 +732,54 @@ function loadLocalDiscounts() {
 }
 function saveLocalDiscounts() { localStorage.setItem('nbr_discounts', JSON.stringify(discountsData)); }
 
-// ═══════════════════════════════════════════════════════
-//  REMOTE SYNC (Google Sheets)
-// ═══════════════════════════════════════════════════════
-async function loadRemoteData() {
-  if (!REMOTE_SYNC_URL) return;
-  try {
-    const [bookRes, discRes] = await Promise.all([
-      fetch(REMOTE_SYNC_URL + '?sheet=bookings'),
-      fetch(REMOTE_SYNC_URL + '?sheet=discounts')
-    ]);
-    if (bookRes.ok) bookings = await bookRes.json();
-    if (discRes.ok) discountsData = await discRes.json();
-  } catch (e) {
-    console.warn('Remote load failed, falling back to local.', e);
-  }
+// ═══════════════════════════════════════════
+//  GOOGLE SHEETS API HELPERS
+// ═══════════════════════════════════════════
+async function loadFromSheet(sheetName) {
+  const range = `${sheetName}!A:Z`;
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?key=${API_KEY}`;
+  const res = await fetch(url);
+  const json = await res.json();
+  if (!json.values || json.values.length === 0) return [];
+  const rows = json.values;
+  const headers = rows.shift().map(h => String(h).toLowerCase());
+  return rows.map(row => {
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = row[i] || ''; });
+    return obj;
+  });
 }
 
-async function syncRemoteData() {
-  if (!REMOTE_SYNC_URL) return;
-  try {
-    await fetch(REMOTE_SYNC_URL, {
-      method: 'POST',
-      body: JSON.stringify({ type: 'bookings', data: bookings }),
-      headers: { 'Content-Type': 'application/json' }
-    });
-    await fetch(REMOTE_SYNC_URL, {
-      method: 'POST',
-      body: JSON.stringify({ type: 'discounts', data: discountsData }),
-      headers: { 'Content-Type': 'application/json' }
-    });
-  } catch (e) {
-    console.warn('Remote sync failed', e);
-  }
+async function saveToSheet(sheetName, data) {
+  const range = `${sheetName}!A:Z`;
+  // Clear existing content
+  await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}:clear`,
+    { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({}) }
+  );
+  
+  if (data.length === 0) return;
+  
+  const headers = Object.keys(data[0]);
+  const values = [headers, ...data.map(obj => headers.map(h => obj[h] !== undefined ? obj[h] : ''))];
+  
+  await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?valueInputOption=RAW`,
+    {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        range: range,
+        majorDimension: 'ROWS',
+        values: values
+      })
+    }
+  );
 }
 
 async function saveAllData() {
-  if (REMOTE_SYNC_URL) {
-    await syncRemoteData();
-  } else {
-    saveLocalBookings();
-    saveLocalDiscounts();
-  }
+  await saveToSheet('Bookings', bookings);
+  await saveToSheet('Discounts', discountsData);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -786,32 +794,30 @@ function getFullPhone() {
 //  DATA INITIALISATION
 // ═══════════════════════════════════════════════════════
 async function initData() {
-  if (REMOTE_SYNC_URL) {
-    await loadRemoteData();
-    if (bookings.length === 0) bookings = loadLocalBookings();
-    if (discountsData.length === 0) discountsData = loadLocalDiscounts();
-  } else {
-    bookings = loadLocalBookings();
-    discountsData = loadLocalDiscounts();
+  try {
+    bookings = await loadFromSheet('Bookings');
+    discountsData = await loadFromSheet('Discounts');
+  } catch (e) {
+    console.warn('Remote load failed, using local backup', e);
+    bookings = JSON.parse(localStorage.getItem('nbr_bookings') || '[]');
+    discountsData = JSON.parse(localStorage.getItem('nbr_discounts') || '[]');
   }
 
-  // Seed sample data if empty
-  if (bookings.length === 0) {
+  // Seed sample data if both are empty
+  if (bookings.length === 0 && discountsData.length === 0) {
     bookings = [
       { id:1, fname:'Aisha', lname:'Karim', phone:'+60176445338', email:'aisha@email.com', service:'Manicure + Gel — RM 30', date:'2025-06-12', time:'2:00 PM', notes:'Light pink please', status:'confirmed', code:'NEWCLIENT10', finalService:'', finalPrice:null },
       { id:2, fname:'Nura', lname:'Halim', phone:'+601123456789', email:'nura@email.com', service:'Manicure — RM 10', date:'2025-06-13', time:'11:00 AM', notes:'', status:'pending', code:'', finalService:'', finalPrice:null },
       { id:3, fname:'Siti', lname:'Rahman', phone:'+601098765432', email:'siti@email.com', service:'Nail Art / Cat Eye / French — RM 10–30 add-on', date:'2025-06-14', time:'3:00 PM', notes:'Cat eye, dark burgundy', status:'confirmed', code:'', finalService:'', finalPrice:null }
     ];
-  }
-  if (discountsData.length === 0) {
     discountsData = [
       { code:'NEWCLIENT10', label:'New Client Welcome', pct:'10%', used:3 },
       { code:'BDAY15', label:'Birthday Special', pct:'15%', used:1 },
       { code:'REFER20', label:'Referral Reward', pct:'20%', used:0 },
       { code:'LOYAL30', label:'Loyal Customer (5+ visits)', pct:'30%', used:2 }
     ];
+    await saveAllData();
   }
-  await saveAllData();
 }
 
 // ═══════════════════════════════════════════════════════
