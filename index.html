@@ -44,14 +44,13 @@
   .reveal-delay-5 { transition-delay: 0.5s; }
   .reveal-delay-6 { transition-delay: 0.6s; }
 
-  /* NAV SCROLL SHRINK */
+  /* NAV */
   nav { transition: height 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
   nav.scrolled {
     height: 52px;
     box-shadow: 0 2px 20px rgba(42,31,31,0.08);
     background: rgba(253,246,240,0.97);
   }
-
   .nav-links a { position: relative; }
   .nav-links a.active {
     color: var(--rose-dark) !important;
@@ -67,9 +66,6 @@
     background: var(--rose-dark);
     transition: width 0.2s;
   }
-
-  .hero-content { transition: transform 0.1s linear; }
-
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     background: rgba(253,246,240,0.92); backdrop-filter: blur(12px);
@@ -111,23 +107,15 @@
     .nav-book { display: inline-block; margin: 0.5rem auto; width: fit-content; }
   }
 
-  /* Hero */
+  /* HERO */
   .hero {
     min-height: 100vh; display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 120px 2rem 4rem;
     background: linear-gradient(160deg, var(--cream) 60%, var(--blush) 100%);
     position: relative; overflow: hidden;
   }
-  .hero::before {
-    content: ''; position: absolute; top: -80px; right: -80px;
-    width: 420px; height: 420px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(242,196,206,0.35) 0%, transparent 70%);
-  }
-  .hero::after {
-    content: ''; position: absolute; bottom: -60px; left: -60px;
-    width: 300px; height: 300px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,169,110,0.2) 0%, transparent 70%);
-  }
+  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(242,196,206,0.35) 0%, transparent 70%); }
+  .hero::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(201,169,110,0.2) 0%, transparent 70%); }
   .hero-badge { display: inline-block; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-light); padding: 0.3rem 1rem; border-radius: 2rem; margin-bottom: 1.5rem; }
   .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 8vw, 6.5rem); font-weight: 300; line-height: 1.05; color: var(--rose-dark); margin-bottom: 0.3rem; }
   .hero h1 em { font-style: italic; color: var(--gold); }
@@ -138,7 +126,7 @@
   .btn-outline { border: 1px solid var(--rose-dark); color: var(--rose-dark); background: transparent; margin-left: 1rem; }
   .btn-outline:hover { background: var(--rose-dark); color: white; transform: translateY(-1px); }
 
-  /* Socials */
+  /* SOCIAL STRIP */
   .socials-strip {
     background: var(--rose-dark); padding: 1rem 3rem;
     display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;
@@ -147,7 +135,7 @@
   .socials-strip a:hover { color: var(--gold-light); }
   .social-icon { width: 28px; height: 28px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; }
 
-  /* Sections */
+  /* SECTIONS */
   section { padding: 5rem 2rem; }
   .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--rose-dark); margin-bottom: 0.5rem; }
@@ -156,7 +144,7 @@
   .section-header .section-desc { margin: 0 auto; }
   .container { max-width: 1100px; margin: 0 auto; }
 
-  /* Gallery tabs */
+  /* GALLERY TABS */
   .gallery-tabs { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
   .gallery-tab { padding: 0.5rem 1.5rem; border-radius: 2rem; border: 1px solid var(--card-border); background: transparent; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; color: var(--muted); }
   .gallery-tab.active, .gallery-tab:hover { background: var(--rose-dark); color: white; border-color: var(--rose-dark); }
@@ -176,7 +164,7 @@
   .gallery-overlay-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; }
   .gallery-overlay-tag { font-size: 0.72rem; letter-spacing: 0.1em; opacity: 0.8; }
 
-  /* Pricing */
+  /* PRICING */
   #pricing { background: var(--cream); }
   .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
   .pricing-card {
@@ -197,7 +185,7 @@
   .pricing-divider { height: 1px; background: var(--card-border); margin: 1.2rem 0; }
   .discount-tag { display: inline-block; background: var(--blush); color: var(--rose-deep); font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 2rem; margin-top: 0.6rem; }
 
-  /* Discounts */
+  /* DISCOUNTS */
   #discounts { background: linear-gradient(135deg, var(--rose-dark) 0%, #5a2535 100%); color: white; }
   #discounts .section-label { color: var(--rose); }
   #discounts .section-title { color: white; }
@@ -210,7 +198,7 @@
   .discount-cond { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
   .discount-code { display: inline-block; margin-top: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--gold-light); font-size: 0.75rem; letter-spacing: 0.12em; padding: 0.25rem 0.8rem; border-radius: 2rem; }
 
-  /* Booking */
+  /* BOOKING */
   #booking { background: var(--white); }
   .booking-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
   .booking-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--rose-dark); margin-bottom: 1rem; }
@@ -239,16 +227,17 @@
   .booking-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--rose-dark); margin-bottom: 0.5rem; }
   .booking-success p { font-size: 0.88rem; color: var(--muted); }
 
+  /* NOTIFICATION PREVIEW */
   .notif-preview { margin-top: 1.5rem; background: var(--white); border: 1px solid var(--card-border); border-radius: 10px; padding: 1rem 1.2rem; }
   .notif-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
   .notif-msg { font-size: 0.82rem; color: var(--muted); line-height: 1.5; background: var(--blush); padding: 0.7rem; border-radius: 6px; font-style: italic; }
 
-  /* Phone prefix */
+  /* PHONE PREFIX */
   .phone-wrap { display: flex; align-items: center; gap: 0; }
   .phone-prefix { background: var(--rose-dark); color: white; padding: 0.65rem 0.9rem; border-radius: 8px 0 0 8px; font-size: 0.9rem; white-space: nowrap; }
   .phone-wrap input { flex: 1; border-radius: 0 8px 8px 0 !important; }
 
-  /* Admin */
+  /* ADMIN */
   #admin { background: var(--ink); color: white; }
   #admin .section-label { color: var(--rose); }
   #admin .section-title { color: white; }
@@ -278,7 +267,7 @@
   .discount-form select option { background: #2a1f1f; color: white; }
   .admin-add-btn { padding: 0.6rem 1.2rem; background: var(--rose-dark); color: white; border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; cursor: pointer; white-space: nowrap; }
 
-  /* Admin gate */
+  /* ADMIN GATE */
   .admin-gate {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.06);
@@ -320,7 +309,7 @@
   .admin-gate button:hover { background: var(--rose-deep); }
   .gate-error { color: #f5a0a0; font-size: 0.82rem; margin-top: 0.8rem; display: none; }
 
-  /* Gallery upload */
+  /* GALLERY UPLOAD */
   .gallery-upload-zone {
     border: 2px dashed rgba(255,255,255,0.25);
     border-radius: 24px;
@@ -381,6 +370,10 @@
 </style>
 </head>
 <body>
+<!-- Hidden iframe for form POST (write) -->
+<iframe name="hiddenFrame" style="display:none;"></iframe>
+
+<!-- NAV -->
 <nav>
   <div class="nav-logo"><a href="#home">Nails <span>by Rey</span></a></div>
   <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
@@ -394,6 +387,7 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-badge reveal">✦ Professional Nail Artist · Kajang, Selangor</div>
@@ -406,6 +400,7 @@
   </div>
 </section>
 
+<!-- SOCIALS STRIP -->
 <div class="socials-strip">
   <a href="https://wa.me/60176445338" target="_blank"><div class="social-icon">💬</div> WhatsApp · 017-6445338</a>
   <a href="https://instagram.com/nails.by.rey" target="_blank"><div class="social-icon">📸</div> Instagram</a>
@@ -414,6 +409,7 @@
   <span style="color:rgba(255,255,255,0.4);font-size:0.78rem;">📍 Kajang (Homebased)</span>
 </div>
 
+<!-- GALLERY -->
 <section id="gallery">
   <div class="container">
     <div class="section-header">
@@ -432,6 +428,7 @@
   </div>
 </section>
 
+<!-- PRICING -->
 <section id="pricing">
   <div class="container">
     <div class="section-header">
@@ -449,6 +446,7 @@
   </div>
 </section>
 
+<!-- DISCOUNTS -->
 <section id="discounts">
   <div class="container">
     <div class="section-header">
@@ -460,6 +458,7 @@
   </div>
 </section>
 
+<!-- BOOKING -->
 <section id="booking">
   <div class="container">
     <div class="section-header"><div class="section-label reveal">Appointments</div><h2 class="section-title reveal reveal-delay-1">Book a Session</h2><p class="section-desc reveal reveal-delay-2">Fill in the form below — Rey will confirm your slot via WhatsApp or email within a few hours.</p></div>
@@ -492,6 +491,7 @@
   </div>
 </section>
 
+<!-- ADMIN PANEL -->
 <section id="admin">
   <div class="container">
     <div class="section-header" style="text-align:left;"><div class="section-label">Management</div><h2 class="section-title">Admin Dashboard</h2></div>
@@ -565,8 +565,9 @@
 
 <script>
 // ═══════════════════════════════════════════
-//  CONFIG
+//  CONFIG – YOUR APPS SCRIPT URL (write) + API KEY (read)
 // ═══════════════════════════════════════════
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypOt0N-RCiBowshVcdTUte-Dmn-_Iizbf5nt0ciKiozLT7e-gGFmG4iCXgNTGW4ils/exec';
 const API_KEY = 'AIzaSyCSof22kUg19D6wdd0PYXmUPkA71x-sFhU';
 const SPREADSHEET_ID = '1nbQzt6TzZ4fi0mt1_v4sAsOO9ZIFyMHiGWUz61NVz7s';
 const ADMIN_PASSWORD = 'nailsbyrey2025';
@@ -576,46 +577,46 @@ let bookings = [];
 let discountsData = [];
 
 // ═══════════════════════════════════════════
-//  GOOGLE SHEETS API HELPERS
+//  READING (Google Sheets API)
 // ═══════════════════════════════════════════
 async function loadFromSheet(sheetName) {
   const range = `${sheetName}!A:Z`;
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?key=${API_KEY}`;
-  try {
-    const res = await fetch(url);
-    const json = await res.json();
-    if (!json.values || json.values.length === 0) return [];
-    const rows = json.values;
-    const headers = rows.shift().map(h => String(h).toLowerCase());
-    return rows.map(row => headers.reduce((obj, h, i) => { obj[h] = row[i] || ''; return obj; }, {}));
-  } catch (e) {
-    console.error('Failed to load from sheet', e);
-    return [];
-  }
+  const res = await fetch(url);
+  const json = await res.json();
+  if (!json.values || json.values.length === 0) return [];
+  const rows = json.values;
+  const headers = rows.shift().map(h => String(h).toLowerCase());
+  return rows.map(row => headers.reduce((obj, h, i) => { obj[h] = row[i] || ''; return obj; }, {}));
 }
 
-async function saveToSheet(sheetName, data) {
-  const range = `${sheetName}!A:Z`;
-  // Clear existing content
-  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}:clear`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({})
-  });
-  
-  if (data.length === 0) return;
-  
-  const headers = Object.keys(data[0]);
-  const values = [headers, ...data.map(obj => headers.map(h => obj[h] !== undefined ? obj[h] : ''))];
-  
-  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?valueInputOption=RAW`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      range: range,
-      majorDimension: 'ROWS',
-      values: values
-    })
+// ═══════════════════════════════════════════
+//  WRITING (hidden form POST – no CORS)
+// ═══════════════════════════════════════════
+function saveToSheet(sheetName, data) {
+  return new Promise((resolve) => {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = APPS_SCRIPT_URL;
+    form.target = 'hiddenFrame';
+    form.style.display = 'none';
+
+    const typeField = document.createElement('input');
+    typeField.type = 'hidden';
+    typeField.name = 'type';
+    typeField.value = sheetName === 'Bookings' ? 'bookings' : 'discounts';
+    form.appendChild(typeField);
+
+    const dataField = document.createElement('input');
+    dataField.type = 'hidden';
+    dataField.name = 'data';
+    dataField.value = JSON.stringify(data);
+    form.appendChild(dataField);
+
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+    setTimeout(resolve, 500);
   });
 }
 
@@ -624,8 +625,7 @@ async function saveAllData() {
     await saveToSheet('Bookings', bookings);
     await saveToSheet('Discounts', discountsData);
   } catch (e) {
-    console.error('Remote save failed', e);
-    // fallback to local
+    console.error('Remote save failed, using localStorage');
     localStorage.setItem('nbr_bookings', JSON.stringify(bookings));
     localStorage.setItem('nbr_discounts', JSON.stringify(discountsData));
   }
@@ -639,7 +639,6 @@ async function initData() {
     bookings = await loadFromSheet('Bookings');
     discountsData = await loadFromSheet('Discounts');
   } catch (e) {
-    // if online fails, use local backup
     bookings = JSON.parse(localStorage.getItem('nbr_bookings') || '[]');
     discountsData = JSON.parse(localStorage.getItem('nbr_discounts') || '[]');
   }
@@ -675,9 +674,7 @@ const PLACEHOLDER_ITEMS = [
   { id:'p6', tag:'acrylic', label:'Nude Almond', emoji:'🍂', bg:'#fdf3e3', isPlaceholder:true },
 ];
 
-function loadGalleryPhotos() {
-  try { return JSON.parse(localStorage.getItem('nbr_gallery') || '[]'); } catch { return []; }
-}
+function loadGalleryPhotos() { try { return JSON.parse(localStorage.getItem('nbr_gallery') || '[]'); } catch { return []; } }
 function saveGalleryPhotos(photos) { localStorage.setItem('nbr_gallery', JSON.stringify(photos)); }
 
 let currentGalleryTag = 'nail-art';
