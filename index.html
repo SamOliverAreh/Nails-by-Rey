@@ -24,6 +24,7 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
 
+  /* SCROLL REVEAL */
   .reveal {
     opacity: 0;
     transform: translateY(32px);
@@ -43,6 +44,7 @@
   .reveal-delay-5 { transition-delay: 0.5s; }
   .reveal-delay-6 { transition-delay: 0.6s; }
 
+  /* NAV SCROLL SHRINK */
   nav { transition: height 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
   nav.scrolled {
     height: 52px;
@@ -276,7 +278,7 @@
   .discount-form select option { background: #2a1f1f; color: white; }
   .admin-add-btn { padding: 0.6rem 1.2rem; background: var(--rose-dark); color: white; border: none; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; cursor: pointer; white-space: nowrap; }
 
-  /* Admin gate (password) */
+  /* Admin gate */
   .admin-gate {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.06);
@@ -379,8 +381,6 @@
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <div class="nav-logo"><a href="#home">Nails <span>by Rey</span></a></div>
   <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
@@ -394,7 +394,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-badge reveal">✦ Professional Nail Artist · Kajang, Selangor</div>
@@ -407,7 +406,6 @@
   </div>
 </section>
 
-<!-- SOCIALS STRIP -->
 <div class="socials-strip">
   <a href="https://wa.me/60176445338" target="_blank"><div class="social-icon">💬</div> WhatsApp · 017-6445338</a>
   <a href="https://instagram.com/nails.by.rey" target="_blank"><div class="social-icon">📸</div> Instagram</a>
@@ -416,7 +414,6 @@
   <span style="color:rgba(255,255,255,0.4);font-size:0.78rem;">📍 Kajang (Homebased)</span>
 </div>
 
-<!-- GALLERY -->
 <section id="gallery">
   <div class="container">
     <div class="section-header">
@@ -435,7 +432,6 @@
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
   <div class="container">
     <div class="section-header">
@@ -444,63 +440,15 @@
       <p class="section-desc reveal reveal-delay-2">Transparent pricing for every service. All sets include nail prep, cuticle care & aftercare advice.</p>
     </div>
     <div class="pricing-grid">
-      <div class="pricing-card reveal reveal-delay-1">
-        <div class="pricing-icon">💅</div>
-        <div class="pricing-name">Manicure</div>
-        <div class="pricing-desc">Classic manicure — nail shaping, cuticle care and a clean finish.</div>
-        <div class="pricing-price">RM 10 <span>/ set</span></div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Nail shaping & filing</li><li>Cuticle care</li><li>Regular polish application</li><li>Quick & affordable</li>
-        </ul>
-      </div>
-      <div class="pricing-card featured reveal reveal-delay-2">
-        <div class="featured-badge">✦ Most Popular</div>
-        <div class="pricing-icon">✨</div>
-        <div class="pricing-name">Manicure + Gel</div>
-        <div class="pricing-desc">Full manicure with long-lasting gel colour that stays glossy for weeks.</div>
-        <div class="pricing-price">RM 30 <span>/ set</span></div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Full manicure included</li><li>Gel polish application</li><li>UV/LED cure for durability</li><li>Lasts 2–3 weeks</li>
-        </ul>
-        <div class="discount-tag">New clients save 10%</div>
-      </div>
-      <div class="pricing-card reveal reveal-delay-3">
-        <div class="pricing-icon">💎</div>
-        <div class="pricing-name">Add-on: Extensions</div>
-        <div class="pricing-desc">Nail tip extensions for extra length — priced per piece.</div>
-        <div class="pricing-price">RM 2 <span>/ piece</span></div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Full set of 10 = RM 20</li><li>Mix & match length</li><li>Compatible with gel sets</li><li>Add to any service</li>
-        </ul>
-      </div>
-      <div class="pricing-card reveal reveal-delay-4">
-        <div class="pricing-icon">🌸</div>
-        <div class="pricing-name">Add-on: Nail Art</div>
-        <div class="pricing-desc">Hand-painted nail art, cat eye, or French design — stunning accent nails or full sets.</div>
-        <div class="pricing-price">RM 10–30 <span>/ set</span></div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Nail art designs</li><li>Cat eye effect</li><li>French / modern French</li><li>Price varies by complexity</li>
-        </ul>
-      </div>
-      <div class="pricing-card reveal reveal-delay-5">
-        <div class="pricing-icon">🔧</div>
-        <div class="pricing-name">Gel Removal</div>
-        <div class="pricing-desc">Safe and gentle gel removal without damaging your natural nails.</div>
-        <div class="pricing-price">RM 20 <span>/ session</span></div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Soak-off gel removal</li><li>Nail care after removal</li><li>Can book with new set</li><li>Gentle on natural nails</li>
-        </ul>
-      </div>
+      <div class="pricing-card reveal reveal-delay-1"><div class="pricing-icon">💅</div><div class="pricing-name">Manicure</div><div class="pricing-desc">Classic manicure — nail shaping, cuticle care and a clean finish.</div><div class="pricing-price">RM 10 <span>/ set</span></div><div class="pricing-divider"></div><ul class="pricing-items"><li>Nail shaping & filing</li><li>Cuticle care</li><li>Regular polish application</li><li>Quick & affordable</li></ul></div>
+      <div class="pricing-card featured reveal reveal-delay-2"><div class="featured-badge">✦ Most Popular</div><div class="pricing-icon">✨</div><div class="pricing-name">Manicure + Gel</div><div class="pricing-desc">Full manicure with long-lasting gel colour that stays glossy for weeks.</div><div class="pricing-price">RM 30 <span>/ set</span></div><div class="pricing-divider"></div><ul class="pricing-items"><li>Full manicure included</li><li>Gel polish application</li><li>UV/LED cure for durability</li><li>Lasts 2–3 weeks</li></ul><div class="discount-tag">New clients save 10%</div></div>
+      <div class="pricing-card reveal reveal-delay-3"><div class="pricing-icon">💎</div><div class="pricing-name">Add-on: Extensions</div><div class="pricing-desc">Nail tip extensions for extra length — priced per piece.</div><div class="pricing-price">RM 2 <span>/ piece</span></div><div class="pricing-divider"></div><ul class="pricing-items"><li>Full set of 10 = RM 20</li><li>Mix & match length</li><li>Compatible with gel sets</li><li>Add to any service</li></ul></div>
+      <div class="pricing-card reveal reveal-delay-4"><div class="pricing-icon">🌸</div><div class="pricing-name">Add-on: Nail Art</div><div class="pricing-desc">Hand-painted nail art, cat eye, or French design — stunning accent nails or full sets.</div><div class="pricing-price">RM 10–30 <span>/ set</span></div><div class="pricing-divider"></div><ul class="pricing-items"><li>Nail art designs</li><li>Cat eye effect</li><li>French / modern French</li><li>Price varies by complexity</li></ul></div>
+      <div class="pricing-card reveal reveal-delay-5"><div class="pricing-icon">🔧</div><div class="pricing-name">Gel Removal</div><div class="pricing-desc">Safe and gentle gel removal without damaging your natural nails.</div><div class="pricing-price">RM 20 <span>/ session</span></div><div class="pricing-divider"></div><ul class="pricing-items"><li>Soak-off gel removal</li><li>Nail care after removal</li><li>Can book with new set</li><li>Gentle on natural nails</li></ul></div>
     </div>
   </div>
 </section>
 
-<!-- DISCOUNTS -->
 <section id="discounts">
   <div class="container">
     <div class="section-header">
@@ -512,14 +460,9 @@
   </div>
 </section>
 
-<!-- BOOKING -->
 <section id="booking">
   <div class="container">
-    <div class="section-header">
-      <div class="section-label reveal">Appointments</div>
-      <h2 class="section-title reveal reveal-delay-1">Book a Session</h2>
-      <p class="section-desc reveal reveal-delay-2">Fill in the form below — Rey will confirm your slot via WhatsApp or email within a few hours.</p>
-    </div>
+    <div class="section-header"><div class="section-label reveal">Appointments</div><h2 class="section-title reveal reveal-delay-1">Book a Session</h2><p class="section-desc reveal reveal-delay-2">Fill in the form below — Rey will confirm your slot via WhatsApp or email within a few hours.</p></div>
     <div class="booking-wrap">
       <div class="booking-info reveal reveal-left">
         <h3>How It Works</h3>
@@ -530,83 +473,31 @@
           <div class="booking-step"><div class="step-num">3</div><div class="step-text"><strong>Get Confirmed</strong>Rey will confirm your slot via WhatsApp or email.</div></div>
           <div class="booking-step"><div class="step-num">4</div><div class="step-text"><strong>Come & Create</strong>Arrive at your slot — sit back, relax and enjoy your new set.</div></div>
         </div>
-        <div class="notif-preview">
-          <div class="notif-header">📩 Sample Confirmation Message</div>
-          <div class="notif-msg">"Hi [Name]! ✨ Your appointment with Nails by Rey is confirmed for [Date] at [Time]. Service: [Service]. Please reply to reschedule if needed. See you soon! — Rey 💅"</div>
-        </div>
+        <div class="notif-preview"><div class="notif-header">📩 Sample Confirmation Message</div><div class="notif-msg">"Hi [Name]! ✨ Your appointment with Nails by Rey is confirmed for [Date] at [Time]. Service: [Service]. Please reply to reschedule if needed. See you soon! — Rey 💅"</div></div>
       </div>
       <div class="reveal reveal-right">
         <div class="booking-form" id="bookingForm">
-          <div class="form-row">
-            <div class="form-group"><label>First Name</label><input type="text" id="fname" placeholder="e.g. Amira"></div>
-            <div class="form-group"><label>Last Name</label><input type="text" id="lname" placeholder="e.g. Zain"></div>
-          </div>
-          <div class="form-group">
-            <label>WhatsApp Number</label>
-            <div class="phone-wrap">
-              <span class="phone-prefix">+60</span>
-              <input type="tel" id="phone" placeholder="12-345 6789">
-            </div>
-          </div>
+          <div class="form-row"><div class="form-group"><label>First Name</label><input type="text" id="fname" placeholder="e.g. Amira"></div><div class="form-group"><label>Last Name</label><input type="text" id="lname" placeholder="e.g. Zain"></div></div>
+          <div class="form-group"><label>WhatsApp Number</label><div class="phone-wrap"><span class="phone-prefix">+60</span><input type="tel" id="phone" placeholder="12-345 6789"></div></div>
           <div class="form-group"><label>Email Address</label><input type="email" id="email" placeholder="you@email.com"></div>
-          <div class="form-group">
-            <label>Service</label>
-            <select id="service">
-              <option value="">Select a service...</option>
-              <option>Manicure — RM 10</option>
-              <option>Manicure + Gel — RM 30</option>
-              <option>Manicure + Gel + Extensions (10 pcs) — RM 50</option>
-              <option>Nail Art / Cat Eye / French — RM 10–30 add-on</option>
-              <option>Gel Removal — RM 20</option>
-              <option>Gel Removal + New Set — combined</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label>Preferred Date</label><input type="date" id="bdate"></div>
-            <div class="form-group">
-              <label>Preferred Time</label>
-              <select id="btime">
-                <option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option>
-                <option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option>
-              </select>
-            </div>
-          </div>
+          <div class="form-group"><label>Service</label><select id="service"><option value="">Select a service...</option><option>Manicure — RM 10</option><option>Manicure + Gel — RM 30</option><option>Manicure + Gel + Extensions (10 pcs) — RM 50</option><option>Nail Art / Cat Eye / French — RM 10–30 add-on</option><option>Gel Removal — RM 20</option><option>Gel Removal + New Set — combined</option></select></div>
+          <div class="form-row"><div class="form-group"><label>Preferred Date</label><input type="date" id="bdate"></div><div class="form-group"><label>Preferred Time</label><select id="btime"><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>2:00 PM</option><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option></select></div></div>
           <div class="form-group"><label>Discount Code (optional)</label><input type="text" id="dcode" placeholder="e.g. NEWCLIENT10"></div>
           <div class="form-group"><label>Inspo Notes</label><textarea id="notes" placeholder="Share any reference, colour ideas, or special requests..."></textarea></div>
           <button class="form-submit" onclick="submitBooking()">✦ Request Appointment</button>
         </div>
-        <div class="booking-success" id="bookingSuccess">
-          <div class="check">🌸</div><h4>Booking Request Sent!</h4>
-          <p id="successMsg">Rey will confirm your slot shortly via WhatsApp or email. Can't wait to see you!</p>
-          <div style="margin-top:1.2rem;"><a href="https://wa.me/60176445338" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">Message on WhatsApp</a></div>
-        </div>
+        <div class="booking-success" id="bookingSuccess"><div class="check">🌸</div><h4>Booking Request Sent!</h4><p id="successMsg">Rey will confirm your slot shortly via WhatsApp or email. Can't wait to see you!</p><div style="margin-top:1.2rem;"><a href="https://wa.me/60176445338" target="_blank" class="btn btn-primary" style="font-size:0.82rem;">Message on WhatsApp</a></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ADMIN -->
 <section id="admin">
   <div class="container">
-    <div class="section-header" style="text-align:left;">
-      <div class="section-label">Management</div>
-      <h2 class="section-title">Admin Dashboard</h2>
-    </div>
-
-    <div id="adminGate" class="admin-gate">
-      <h3>🔐 Admin Access</h3>
-      <p>Enter the password to manage bookings, gallery and discounts.</p>
-      <div class="pw-row">
-        <input type="password" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter')checkAdminPw()">
-        <button onclick="checkAdminPw()">Enter</button>
-      </div>
-      <div class="gate-error" id="gateError">Incorrect password. Try again.</div>
-      <p style="margin-top:1.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Default: <code style="color:var(--rose)">nailsbyrey2025</code> — change before publishing.</p>
-    </div>
-
+    <div class="section-header" style="text-align:left;"><div class="section-label">Management</div><h2 class="section-title">Admin Dashboard</h2></div>
+    <div id="adminGate" class="admin-gate"><h3>🔐 Admin Access</h3><p>Enter the password to manage bookings, gallery and discounts.</p><div class="pw-row"><input type="password" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter')checkAdminPw()"><button onclick="checkAdminPw()">Enter</button></div><div class="gate-error" id="gateError">Incorrect password. Try again.</div><p style="margin-top:1.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Default: <code style="color:var(--rose)">nailsbyrey2025</code> — change before publishing.</p></div>
     <div id="adminDash" style="display:none;">
       <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;"><button class="admin-action" onclick="logoutAdmin()">Log out</button></div>
-
       <div class="admin-stats">
         <div class="admin-stat"><div class="admin-stat-val" id="stat-total">0</div><div class="admin-stat-label">Total</div></div>
         <div class="admin-stat"><div class="admin-stat-val" id="stat-confirmed">0</div><div class="admin-stat-label">Confirmed</div></div>
@@ -616,7 +507,6 @@
         <div class="admin-stat"><div class="admin-stat-val" id="stat-revenue">RM 0</div><div class="admin-stat-label">Revenue</div></div>
         <div class="admin-stat"><div class="admin-stat-val" id="stat-photos">0</div><div class="admin-stat-label">Photos</div></div>
       </div>
-
       <div class="admin-tabs">
         <button class="admin-tab active" onclick="switchTab('bookings', this)">Bookings</button>
         <button class="admin-tab" onclick="switchTab('customers', this)">Customers</button>
@@ -624,113 +514,66 @@
         <button class="admin-tab" onclick="switchTab('discounts-admin', this)">Discounts</button>
       </div>
 
-      <!-- Bookings Tab -->
       <div class="admin-panel active" id="tab-bookings">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;">
-          <div style="display:flex;gap:0.5rem;">
-            <button class="admin-action" onclick="addManualBooking()">➕ Add Booking</button>
-          </div>
+          <button class="admin-action" onclick="addManualBooking()">➕ Add Booking</button>
           <div style="display:flex;gap:0.5rem;align-items:center;">
             <input type="text" placeholder="Search..." oninput="searchBookings(this.value)" id="bookingSearch" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem 1rem; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; width: 200px;">
             <button class="admin-export-btn" onclick="exportBookingsCSV()">📥 CSV</button>
           </div>
         </div>
-        <div class="table-wrapper">
-          <table class="admin-table" id="bookingsTable">
-            <thead><tr>
-              <th>Customer</th><th>Service</th><th>Date & Time</th><th>Contact</th><th>Status</th><th>Final Price</th><th>Actions</th>
-            </tr></thead>
-            <tbody id="bookingsTbody"></tbody>
-          </table>
-        </div>
+        <div class="table-wrapper"><table class="admin-table" id="bookingsTable"><thead><tr><th>Customer</th><th>Service</th><th>Date & Time</th><th>Contact</th><th>Status</th><th>Final Price</th><th>Actions</th></tr></thead><tbody id="bookingsTbody"></tbody></table></div>
       </div>
 
-      <!-- Customers Tab -->
       <div class="admin-panel" id="tab-customers">
         <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;"><button class="admin-export-btn" onclick="exportCustomersCSV()">📥 CSV</button></div>
-        <div class="table-wrapper">
-          <table class="admin-table">
-            <thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Visits</th><th>Last Service</th><th>Total Spent</th></tr></thead>
-            <tbody id="customersTbody"></tbody>
-          </table>
-        </div>
+        <div class="table-wrapper"><table class="admin-table"><thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Visits</th><th>Last Service</th><th>Total Spent</th></tr></thead><tbody id="customersTbody"></tbody></table></div>
       </div>
 
-      <!-- Gallery Manager Tab -->
       <div class="admin-panel" id="tab-gallery-mgr">
         <div class="gallery-upload-zone" id="uploadZone" onclick="document.getElementById('photoInput').click()" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
           <input type="file" id="photoInput" accept="image/*" multiple onchange="handleFileSelect(this.files)">
-          <div class="upload-icon">📷</div>
-          <div class="upload-label">Drag & drop photos here or <span>browse files</span></div>
-          <div style="margin-top:0.6rem;font-size:0.8rem;color:rgba(255,255,255,0.4);">JPG, PNG, WEBP · Multiple files supported</div>
+          <div class="upload-icon">📷</div><div class="upload-label">Drag & drop photos here or <span>browse files</span></div><div style="margin-top:0.6rem;font-size:0.8rem;color:rgba(255,255,255,0.4);">JPG, PNG, WEBP · Multiple files supported</div>
         </div>
         <div class="upload-meta" id="uploadMeta" style="display:none;">
           <img id="uploadPreview" class="upload-preview" alt="Preview">
           <input type="text" id="photoTitle" placeholder="Title e.g. Cherry Blossom Set">
-          <select id="photoTag">
-            <option value="nail-art">Nail Art</option><option value="gel">Gel</option><option value="french">French</option><option value="ombre">Ombré</option><option value="acrylic">Acrylic</option>
-          </select>
+          <select id="photoTag"><option value="nail-art">Nail Art</option><option value="gel">Gel</option><option value="french">French</option><option value="ombre">Ombré</option><option value="acrylic">Acrylic</option></select>
           <button class="admin-add-btn" onclick="savePhoto()">Upload</button>
           <button class="admin-action" onclick="cancelUpload()" style="padding:0.7rem 1.2rem;">Cancel</button>
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);" id="galleryMgrCount"></div>
-          <button class="admin-action" onclick="clearAllPhotos()" style="font-size:0.72rem;">Clear All</button>
-        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;"><div style="font-size:0.8rem;color:rgba(255,255,255,0.4);" id="galleryMgrCount"></div><button class="admin-action" onclick="clearAllPhotos()" style="font-size:0.72rem;">Clear All</button></div>
         <div class="gallery-mgr-grid" id="galleryMgrGrid"></div>
       </div>
 
-      <!-- Discounts Admin Tab -->
       <div class="admin-panel" id="tab-discounts-admin">
         <div class="discount-form">
           <input type="text" placeholder="Code e.g. BDAY20" id="dc-code">
           <input type="text" placeholder="Label e.g. Birthday Deal" id="dc-label">
-          <select id="dc-pct">
-            <option>5%</option><option>10%</option><option>15%</option><option>20%</option><option>30%</option>
-          </select>
+          <select id="dc-pct"><option>5%</option><option>10%</option><option>15%</option><option>20%</option><option>30%</option></select>
           <button class="admin-add-btn" onclick="addDiscount()">+ Add</button>
         </div>
-        <div class="table-wrapper">
-          <table class="admin-table">
-            <thead><tr><th>Code</th><th>Label</th><th>Discount</th><th>Used</th><th>Actions</th></tr></thead>
-            <tbody id="discountsTbody"></tbody>
-          </table>
-        </div>
+        <div class="table-wrapper"><table class="admin-table"><thead><tr><th>Code</th><th>Label</th><th>Discount</th><th>Used</th><th>Actions</th></tr></thead><tbody id="discountsTbody"></tbody></table></div>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>© 2025 Nails by Rey · Vive Reytchel · 📍 Kajang (Homebased) · <a href="https://wa.me/60176445338">017-6445338</a> · <a href="#booking">Book a Session</a></p>
-</footer>
+<footer><p>© 2025 Nails by Rey · Vive Reytchel · 📍 Kajang (Homebased) · <a href="https://wa.me/60176445338">017-6445338</a> · <a href="#booking">Book a Session</a></p></footer>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 //  CONFIG
-// ═══════════════════════════════════════════════════════
-const API_KEY = 'AIzaSyCSof22kUg19D6wdd0PYXmUPkA71x-sFhU';   // ← Paste your API key here
+// ═══════════════════════════════════════════
+const API_KEY = 'AIzaSyCSof22kUg19D6wdd0PYXmUPkA71x-sFhU';
 const SPREADSHEET_ID = '1nbQzt6TzZ4fi0mt1_v4sAsOO9ZIFyMHiGWUz61NVz7s';
-
 const ADMIN_PASSWORD = 'nailsbyrey2025';
 const ADMIN_WA = '60176445338';
 
 let bookings = [];
 let discountsData = [];
-
-// ═══════════════════════════════════════════════════════
-//  LOCAL STORAGE HELPERS
-// ═══════════════════════════════════════════════════════
-function loadLocalBookings() {
-  try { return JSON.parse(localStorage.getItem('nbr_bookings') || '[]'); } catch { return []; }
-}
-function saveLocalBookings() { localStorage.setItem('nbr_bookings', JSON.stringify(bookings)); }
-function loadLocalDiscounts() {
-  try { return JSON.parse(localStorage.getItem('nbr_discounts') || '[]'); } catch { return []; }
-}
-function saveLocalDiscounts() { localStorage.setItem('nbr_discounts', JSON.stringify(discountsData)); }
 
 // ═══════════════════════════════════════════
 //  GOOGLE SHEETS API HELPERS
@@ -738,78 +581,78 @@ function saveLocalDiscounts() { localStorage.setItem('nbr_discounts', JSON.strin
 async function loadFromSheet(sheetName) {
   const range = `${sheetName}!A:Z`;
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?key=${API_KEY}`;
-  const res = await fetch(url);
-  const json = await res.json();
-  if (!json.values || json.values.length === 0) return [];
-  const rows = json.values;
-  const headers = rows.shift().map(h => String(h).toLowerCase());
-  return rows.map(row => {
-    const obj = {};
-    headers.forEach((h, i) => { obj[h] = row[i] || ''; });
-    return obj;
-  });
+  try {
+    const res = await fetch(url);
+    const json = await res.json();
+    if (!json.values || json.values.length === 0) return [];
+    const rows = json.values;
+    const headers = rows.shift().map(h => String(h).toLowerCase());
+    return rows.map(row => headers.reduce((obj, h, i) => { obj[h] = row[i] || ''; return obj; }, {}));
+  } catch (e) {
+    console.error('Failed to load from sheet', e);
+    return [];
+  }
 }
 
 async function saveToSheet(sheetName, data) {
   const range = `${sheetName}!A:Z`;
   // Clear existing content
-  await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}:clear`,
-    { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({}) }
-  );
+  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}:clear`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({})
+  });
   
   if (data.length === 0) return;
   
   const headers = Object.keys(data[0]);
   const values = [headers, ...data.map(obj => headers.map(h => obj[h] !== undefined ? obj[h] : ''))];
   
-  await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?valueInputOption=RAW`,
-    {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        range: range,
-        majorDimension: 'ROWS',
-        values: values
-      })
-    }
-  );
+  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?valueInputOption=RAW`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      range: range,
+      majorDimension: 'ROWS',
+      values: values
+    })
+  });
 }
 
 async function saveAllData() {
-  await saveToSheet('Bookings', bookings);
-  await saveToSheet('Discounts', discountsData);
+  try {
+    await saveToSheet('Bookings', bookings);
+    await saveToSheet('Discounts', discountsData);
+  } catch (e) {
+    console.error('Remote save failed', e);
+    // fallback to local
+    localStorage.setItem('nbr_bookings', JSON.stringify(bookings));
+    localStorage.setItem('nbr_discounts', JSON.stringify(discountsData));
+  }
 }
 
-// ═══════════════════════════════════════════════════════
-//  PHONE FORMATTING
-// ═══════════════════════════════════════════════════════
-function getFullPhone() {
-  const digits = document.getElementById('phone').value.replace(/\D/g, '');
-  return '+60' + digits;
-}
-
-// ═══════════════════════════════════════════════════════
-//  DATA INITIALISATION
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
+//  INIT DATA
+// ═══════════════════════════════════════════
 async function initData() {
   try {
     bookings = await loadFromSheet('Bookings');
     discountsData = await loadFromSheet('Discounts');
   } catch (e) {
-    console.warn('Remote load failed, using local backup', e);
+    // if online fails, use local backup
     bookings = JSON.parse(localStorage.getItem('nbr_bookings') || '[]');
     discountsData = JSON.parse(localStorage.getItem('nbr_discounts') || '[]');
   }
 
-  // Seed sample data if both are empty
-  if (bookings.length === 0 && discountsData.length === 0) {
+  if (bookings.length === 0) {
     bookings = [
       { id:1, fname:'Aisha', lname:'Karim', phone:'+60176445338', email:'aisha@email.com', service:'Manicure + Gel — RM 30', date:'2025-06-12', time:'2:00 PM', notes:'Light pink please', status:'confirmed', code:'NEWCLIENT10', finalService:'', finalPrice:null },
       { id:2, fname:'Nura', lname:'Halim', phone:'+601123456789', email:'nura@email.com', service:'Manicure — RM 10', date:'2025-06-13', time:'11:00 AM', notes:'', status:'pending', code:'', finalService:'', finalPrice:null },
       { id:3, fname:'Siti', lname:'Rahman', phone:'+601098765432', email:'siti@email.com', service:'Nail Art / Cat Eye / French — RM 10–30 add-on', date:'2025-06-14', time:'3:00 PM', notes:'Cat eye, dark burgundy', status:'confirmed', code:'', finalService:'', finalPrice:null }
     ];
+    await saveAllData();
+  }
+  if (discountsData.length === 0) {
     discountsData = [
       { code:'NEWCLIENT10', label:'New Client Welcome', pct:'10%', used:3 },
       { code:'BDAY15', label:'Birthday Special', pct:'15%', used:1 },
@@ -820,303 +663,9 @@ async function initData() {
   }
 }
 
-// ═══════════════════════════════════════════════════════
-//  BOOKING LOGIC
-// ═══════════════════════════════════════════════════════
-function submitBooking() {
-  const fname = document.getElementById('fname').value.trim();
-  const rawPhone = document.getElementById('phone').value.trim();
-  const service = document.getElementById('service').value;
-  const bdate = document.getElementById('bdate').value;
-  if (!fname || !rawPhone || !service || !bdate) {
-    return showToast('Please fill in all required fields ✦');
-  }
-
-  const phone = getFullPhone();
-  let code = document.getElementById('dcode').value.trim().toUpperCase();
-  if (code) {
-    const validation = validateDiscount(code, phone, document.getElementById('email').value.trim());
-    if (!validation.valid) {
-      showToast(validation.msg + ' Code cleared.');
-      code = '';
-    }
-  }
-
-  const newBooking = {
-    id: bookings.length + 1,
-    fname,
-    lname: document.getElementById('lname').value.trim(),
-    phone,
-    email: document.getElementById('email').value.trim(),
-    service,
-    date: bdate,
-    time: document.getElementById('btime').value,
-    notes: document.getElementById('notes').value.trim(),
-    status: 'pending',
-    code: code,
-    finalService: '',
-    finalPrice: null
-  };
-
-  bookings.push(newBooking);
-  saveAllData();
-
-  document.getElementById('bookingForm').style.display = 'none';
-  document.getElementById('bookingSuccess').style.display = 'block';
-  document.getElementById('successMsg').textContent =
-    `Hi ${fname}! Rey will confirm your ${service.split(' —')[0]} on ${bdate} at ${newBooking.time} shortly via WhatsApp or email. 💅`;
-
-  updateAllViews();
-
-  // Notify admin
-  const adminMsg = encodeURIComponent(
-    `🔔 New Booking Request\n\n${fname} ${newBooking.lname}\n${service}\n${bdate} at ${newBooking.time}\nPhone: ${phone}\nCode: ${code || 'none'}\nNotes: ${newBooking.notes || 'none'}`
-  );
-  window.open(`https://wa.me/${ADMIN_WA}?text=${adminMsg}`, '_blank');
-}
-
-function validateDiscount(code, phone, email) {
-  const phoneDigits = phone.replace(/\D/g, '');
-  const emailLower = email.toLowerCase();
-
-  if (code === 'NEWCLIENT10') {
-    const exists = bookings.some(b =>
-      (b.phone.replace(/\D/g, '') === phoneDigits) ||
-      (b.email && b.email.toLowerCase() === emailLower)
-    );
-    if (exists) return { valid: false, msg: 'This code is for new clients only.' };
-  }
-
-  if (code === 'LOYAL30') {
-    const completed = bookings.filter(b =>
-      b.phone.replace(/\D/g, '') === phoneDigits && b.status === 'completed'
-    ).length;
-    if (completed < 5) return { valid: false, msg: 'You need at least 5 completed visits for the loyalty code.' };
-  }
-
-  return { valid: true };
-}
-
-// ═══════════════════════════════════════════════════════
-//  ADMIN MANUAL BOOKING
-// ═══════════════════════════════════════════════════════
-function addManualBooking() {
-  const name = prompt('Full name:');
-  if (!name) return;
-  const service = prompt('Service:');
-  if (!service) return;
-  const date = prompt('Date (YYYY-MM-DD):');
-  if (!date) return;
-  const time = prompt('Time (e.g. 2:00 PM):');
-  if (!time) return;
-  const status = prompt('Status (confirmed/pending/completed/cancelled):', 'confirmed');
-  if (!['confirmed','pending','completed','cancelled'].includes(status)) {
-    return showToast('Invalid status');
-  }
-  let finalPrice = null;
-  if (status === 'completed') {
-    const price = prompt('Final price (RM):');
-    finalPrice = parseFloat(price);
-    if (isNaN(finalPrice)) return showToast('Invalid price');
-  }
-  const code = prompt('Discount code (or leave blank):') || '';
-  const phone = prompt('Phone number (with +60):', '+60') || '+6000000000';
-
-  const newBooking = {
-    id: bookings.length + 1,
-    fname: name,
-    lname: '',
-    phone,
-    email: '',
-    service,
-    date,
-    time,
-    notes: '',
-    status,
-    code,
-    finalService: service,
-    finalPrice
-  };
-
-  bookings.push(newBooking);
-  saveAllData();
-  updateAllViews();
-  showToast('Manual booking added ✦');
-}
-
-// ═══════════════════════════════════════════════════════
-//  STATS & TABLE RENDERING
-// ═══════════════════════════════════════════════════════
-function updateAdminStats() {
-  document.getElementById('stat-total').textContent = bookings.length;
-  document.getElementById('stat-confirmed').textContent = bookings.filter(b => b.status === 'confirmed').length;
-  document.getElementById('stat-pending').textContent = bookings.filter(b => b.status === 'pending').length;
-  document.getElementById('stat-completed').textContent = bookings.filter(b => b.status === 'completed').length;
-  document.getElementById('stat-cancelled').textContent = bookings.filter(b => b.status === 'cancelled').length;
-
-  const rev = bookings
-    .filter(b => b.status === 'completed' && b.finalPrice)
-    .reduce((sum, b) => sum + b.finalPrice, 0);
-  document.getElementById('stat-revenue').textContent = 'RM ' + rev.toFixed(0);
-
-  const photos = loadGalleryPhotos();
-  document.getElementById('stat-photos').textContent = photos.length;
-}
-
-function renderBookingsTable(filter = '') {
-  const tbody = document.getElementById('bookingsTbody');
-  const list = filter
-    ? bookings.filter(b => `${b.fname} ${b.lname} ${b.service} ${b.date}`.toLowerCase().includes(filter.toLowerCase()))
-    : bookings;
-
-  tbody.innerHTML = list.map(b => `
-    <tr>
-      <td>${b.fname} ${b.lname}</td>
-      <td>${b.service.split(' —')[0]}</td>
-      <td>${b.date} · ${b.time}</td>
-      <td style="font-size:0.78rem;color:rgba(255,255,255,0.5)">${b.phone}</td>
-      <td><span class="status-badge status-${b.status}">${b.status}</span></td>
-      <td>${b.finalPrice ? 'RM ' + b.finalPrice : '—'}</td>
-      <td>
-        ${b.status === 'pending' ? `<button class="admin-action" onclick="updateStatus(${b.id},'confirmed')">Confirm</button>` : ''}
-        ${b.status === 'confirmed' ? `<button class="admin-action" onclick="completeBooking(${b.id})">Complete</button>` : ''}
-        ${b.status !== 'cancelled' ? `<button class="admin-action" onclick="updateStatus(${b.id},'cancelled')">Cancel</button>` : ''}
-        <button class="admin-action" onclick="editBooking(${b.id})">Edit</button>
-        <button class="admin-action" onclick="notifyWA(${b.id})">Notify</button>
-      </td>
-    </tr>
-  `).join('');
-}
-
-function renderCustomersTable() {
-  const map = {};
-  bookings.forEach(b => {
-    const key = b.phone;
-    if (!map[key]) {
-      map[key] = { name: `${b.fname} ${b.lname}`, phone: b.phone, email: b.email, visits: 0, last: '', spent: 0 };
-    }
-    if (b.status === 'completed') {
-      map[key].visits++;
-      if (!map[key].last || b.date > map[key].last) map[key].last = b.service.split(' —')[0];
-      if (b.finalPrice) map[key].spent += b.finalPrice;
-    }
-  });
-
-  const tbody = document.getElementById('customersTbody');
-  if (!tbody) return;
-  tbody.innerHTML = Object.values(map).map(c => `
-    <tr>
-      <td>${c.name}</td>
-      <td>${c.phone}</td>
-      <td style="font-size:0.8rem;color:rgba(255,255,255,0.5)">${c.email}</td>
-      <td>${c.visits}</td>
-      <td>${c.last}</td>
-      <td>RM ${c.spent.toFixed(0)}</td>
-    </tr>
-  `).join('');
-}
-
-// ═══════════════════════════════════════════════════════
-//  BOOKING ACTIONS (edit, complete, status)
-// ═══════════════════════════════════════════════════════
-function editBooking(id) {
-  const b = bookings.find(b => b.id === id);
-  if (!b) return;
-  const newDate = prompt('New date (YYYY-MM-DD)', b.date);
-  if (!newDate) return;
-  const newTime = prompt('New time (e.g. 2:00 PM)', b.time);
-  if (!newTime) return;
-  const newService = prompt('New service', b.service);
-  if (!newService) return;
-  b.date = newDate; b.time = newTime; b.service = newService;
-  saveAllData();
-  updateAllViews();
-  showToast('Booking edited ✦');
-}
-
-function completeBooking(id) {
-  const b = bookings.find(b => b.id === id);
-  if (!b) return;
-  const finalService = prompt('Final service delivered', b.service);
-  if (finalService === null) return;
-  const price = parseFloat(prompt('Final price (RM)', ''));
-  if (isNaN(price)) return showToast('Invalid price');
-  b.finalService = finalService;
-  b.finalPrice = price;
-  b.status = 'completed';
-  saveAllData();
-  updateAllViews();
-  showToast('Booking completed ✦');
-}
-
-function updateStatus(id, status) {
-  const b = bookings.find(b => b.id === id);
-  if (!b) return;
-  b.status = status;
-  saveAllData();
-  updateAllViews();
-  showToast(`Booking ${status} ✦`);
-}
-
-function notifyWA(id) {
-  const b = bookings.find(b => b.id === id);
-  if (!b) return;
-  const msg = encodeURIComponent(`Hi ${b.fname}! ✨ Your appointment with Nails by Rey is ${b.status} for ${b.date} at ${b.time}. Service: ${b.service.split(' —')[0]}. See you soon! — Rey 💅`);
-  window.open(`https://wa.me/${b.phone.replace(/\D/g,'')}?text=${msg}`, '_blank');
-}
-
-function searchBookings(val) { renderBookingsTable(val); }
-
-// ═══════════════════════════════════════════════════════
-//  CSV EXPORTS
-// ═══════════════════════════════════════════════════════
-function exportBookingsCSV() {
-  const headers = ['ID','First','Last','Phone','Email','Service','Date','Time','Notes','Discount','Status','Final Service','Final Price'];
-  const rows = bookings.map(b => [
-    b.id, b.fname, b.lname, b.phone, b.email, b.service, b.date, b.time,
-    b.notes, b.code, b.status, b.finalService || '', b.finalPrice || ''
-  ]);
-  downloadCSV([headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n'), 'bookings.csv');
-  showToast('Bookings CSV exported ✦');
-}
-
-function exportCustomersCSV() {
-  const map = {};
-  bookings.forEach(b => {
-    const key = b.phone;
-    if (!map[key]) map[key] = { name: `${b.fname} ${b.lname}`, phone: b.phone, email: b.email, visits: 0, last: '', spent: 0 };
-    if (b.status === 'completed') {
-      map[key].visits++;
-      if (!map[key].last || b.date > map[key].last) map[key].last = b.service.split(' —')[0];
-      if (b.finalPrice) map[key].spent += b.finalPrice;
-    }
-  });
-  const headers = ['Name','Phone','Email','Visits','Last Service','Total Spent (RM)'];
-  const rows = Object.values(map).map(c => [c.name, c.phone, c.email, c.visits, c.last, c.spent.toFixed(0)]);
-  downloadCSV([headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n'), 'customers.csv');
-  showToast('Customers CSV exported ✦');
-}
-
-function downloadCSV(content, filename) {
-  const blob = new Blob(['\uFEFF' + content], { type: 'text/csv;charset=utf-8;' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-
-// ═══════════════════════════════════════════════════════
-//  GALLERY, DISCOUNTS, ADMIN TABS, TOAST, SCROLL SPY
-//  (All previous functions preserved, but they now call saveAllData())
-// ═══════════════════════════════════════════════════════
-function loadGalleryPhotos() {
-  try { return JSON.parse(localStorage.getItem('nbr_gallery') || '[]'); } catch { return []; }
-}
-function saveGalleryPhotos(photos) {
-  localStorage.setItem('nbr_gallery', JSON.stringify(photos));
-}
-
+// ═══════════════════════════════════════════
+//  GALLERY (unchanged)
+// ═══════════════════════════════════════════
 const PLACEHOLDER_ITEMS = [
   { id:'p1', tag:'nail-art', label:'Cherry Blossom', emoji:'🌸', bg:'#faeaea', isPlaceholder:true },
   { id:'p2', tag:'gel', label:'Coral Glaze', emoji:'🧡', bg:'#fff0e6', isPlaceholder:true },
@@ -1125,6 +674,11 @@ const PLACEHOLDER_ITEMS = [
   { id:'p5', tag:'nail-art', label:'Abstract Art', emoji:'🎨', bg:'#e8f4fd', isPlaceholder:true },
   { id:'p6', tag:'acrylic', label:'Nude Almond', emoji:'🍂', bg:'#fdf3e3', isPlaceholder:true },
 ];
+
+function loadGalleryPhotos() {
+  try { return JSON.parse(localStorage.getItem('nbr_gallery') || '[]'); } catch { return []; }
+}
+function saveGalleryPhotos(photos) { localStorage.setItem('nbr_gallery', JSON.stringify(photos)); }
 
 let currentGalleryTag = 'nail-art';
 function renderGallery(tag = currentGalleryTag) {
@@ -1219,6 +773,9 @@ function renderGalleryManager() {
   `).join('');
 }
 
+// ═══════════════════════════════════════════
+//  DISCOUNTS
+// ═══════════════════════════════════════════
 function renderDiscountsSection() {
   document.getElementById('discountsGrid').innerHTML = discountsData.map(d => `
     <div class="discount-card">
@@ -1228,7 +785,6 @@ function renderDiscountsSection() {
     </div>
   `).join('');
 }
-
 function renderDiscountsTable() {
   document.getElementById('discountsTbody').innerHTML = discountsData.map((d,i) => `
     <tr>
@@ -1255,17 +811,228 @@ function removeDiscount(i) {
   showToast('Discount removed');
 }
 
-function switchTab(id, btn) {
-  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-'+id).classList.add('active');
+// ═══════════════════════════════════════════
+//  BOOKING & VALIDATION
+// ═══════════════════════════════════════════
+function getFullPhone() {
+  const digits = document.getElementById('phone').value.replace(/\D/g, '');
+  return '+60' + digits;
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+function submitBooking() {
+  const fname = document.getElementById('fname').value.trim();
+  const rawPhone = document.getElementById('phone').value.trim();
+  const service = document.getElementById('service').value;
+  const bdate = document.getElementById('bdate').value;
+  if (!fname || !rawPhone || !service || !bdate) { showToast('Please fill in all required fields ✦'); return; }
+
+  const phone = getFullPhone();
+  let code = document.getElementById('dcode').value.trim().toUpperCase();
+  if (code) {
+    const validation = validateDiscount(code, phone, document.getElementById('email').value.trim());
+    if (!validation.valid) {
+      showToast(validation.msg + ' Code cleared.');
+      code = '';
+    }
+  }
+
+  const newBooking = {
+    id: bookings.length + 1,
+    fname,
+    lname: document.getElementById('lname').value.trim(),
+    phone,
+    email: document.getElementById('email').value.trim(),
+    service,
+    date: bdate,
+    time: document.getElementById('btime').value,
+    notes: document.getElementById('notes').value.trim(),
+    status: 'pending',
+    code: code,
+    finalService: '',
+    finalPrice: null
+  };
+
+  bookings.push(newBooking);
+  saveAllData();
+  document.getElementById('bookingForm').style.display = 'none';
+  document.getElementById('bookingSuccess').style.display = 'block';
+  document.getElementById('successMsg').textContent = `Hi ${fname}! Rey will confirm your ${service.split(' —')[0]} on ${bdate} at ${newBooking.time} shortly via WhatsApp or email. 💅`;
+  updateAllViews();
+
+  const adminMsg = encodeURIComponent(`🔔 New Booking Request\n\n${fname} ${newBooking.lname}\n${service}\n${bdate} at ${newBooking.time}\nPhone: ${phone}\nCode: ${code || 'none'}\nNotes: ${newBooking.notes || 'none'}`);
+  window.open(`https://wa.me/${ADMIN_WA}?text=${adminMsg}`, '_blank');
+}
+
+function validateDiscount(code, phone, email) {
+  const phoneDigits = phone.replace(/\D/g, '');
+  const emailLower = email.toLowerCase();
+  if (code === 'NEWCLIENT10') {
+    const exists = bookings.some(b => (b.phone.replace(/\D/g, '') === phoneDigits) || (b.email && b.email.toLowerCase() === emailLower));
+    if (exists) return { valid: false, msg: 'This code is for new clients only.' };
+  }
+  if (code === 'LOYAL30') {
+    const completed = bookings.filter(b => b.phone.replace(/\D/g, '') === phoneDigits && b.status === 'completed').length;
+    if (completed < 5) return { valid: false, msg: 'You need at least 5 completed visits for the loyalty code.' };
+  }
+  return { valid: true };
+}
+
+// ═══════════════════════════════════════════
+//  ADMIN FUNCTIONS
+// ═══════════════════════════════════════════
+function addManualBooking() {
+  const name = prompt('Full name:'); if (!name) return;
+  const service = prompt('Service:'); if (!service) return;
+  const date = prompt('Date (YYYY-MM-DD):'); if (!date) return;
+  const time = prompt('Time (e.g. 2:00 PM):'); if (!time) return;
+  const status = prompt('Status (confirmed/pending/completed/cancelled):', 'confirmed');
+  if (!['confirmed','pending','completed','cancelled'].includes(status)) return showToast('Invalid status');
+  let finalPrice = null;
+  if (status === 'completed') {
+    const price = prompt('Final price (RM):');
+    finalPrice = parseFloat(price);
+    if (isNaN(finalPrice)) return showToast('Invalid price');
+  }
+  const code = prompt('Discount code (or leave blank):') || '';
+  const phone = prompt('Phone number (with +60):', '+60') || '+6000000000';
+  bookings.push({ id: bookings.length + 1, fname: name, lname: '', phone, email: '', service, date, time, notes: '', status, code, finalService: service, finalPrice });
+  saveAllData();
+  updateAllViews();
+  showToast('Manual booking added ✦');
+}
+
+function updateAdminStats() {
+  document.getElementById('stat-total').textContent = bookings.length;
+  document.getElementById('stat-confirmed').textContent = bookings.filter(b => b.status === 'confirmed').length;
+  document.getElementById('stat-pending').textContent = bookings.filter(b => b.status === 'pending').length;
+  document.getElementById('stat-completed').textContent = bookings.filter(b => b.status === 'completed').length;
+  document.getElementById('stat-cancelled').textContent = bookings.filter(b => b.status === 'cancelled').length;
+  const rev = bookings.filter(b => b.status === 'completed' && b.finalPrice).reduce((sum, b) => sum + b.finalPrice, 0);
+  document.getElementById('stat-revenue').textContent = 'RM ' + rev.toFixed(0);
+  const photos = loadGalleryPhotos();
+  document.getElementById('stat-photos').textContent = photos.length;
+}
+
+function renderBookingsTable(filter = '') {
+  const tbody = document.getElementById('bookingsTbody');
+  const list = filter ? bookings.filter(b => `${b.fname} ${b.lname} ${b.service} ${b.date}`.toLowerCase().includes(filter.toLowerCase())) : bookings;
+  tbody.innerHTML = list.map(b => `
+    <tr>
+      <td>${b.fname} ${b.lname}</td>
+      <td>${b.service.split(' —')[0]}</td>
+      <td>${b.date} · ${b.time}</td>
+      <td style="font-size:0.78rem;color:rgba(255,255,255,0.5)">${b.phone}</td>
+      <td><span class="status-badge status-${b.status}">${b.status}</span></td>
+      <td>${b.finalPrice ? 'RM ' + b.finalPrice : '—'}</td>
+      <td>
+        ${b.status === 'pending' ? `<button class="admin-action" onclick="updateStatus(${b.id},'confirmed')">Confirm</button>` : ''}
+        ${b.status === 'confirmed' ? `<button class="admin-action" onclick="completeBooking(${b.id})">Complete</button>` : ''}
+        ${b.status !== 'cancelled' ? `<button class="admin-action" onclick="updateStatus(${b.id},'cancelled')">Cancel</button>` : ''}
+        <button class="admin-action" onclick="editBooking(${b.id})">Edit</button>
+        <button class="admin-action" onclick="notifyWA(${b.id})">Notify</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function renderCustomersTable() {
+  const map = {};
+  bookings.forEach(b => {
+    const key = b.phone;
+    if (!map[key]) map[key] = { name: `${b.fname} ${b.lname}`, phone: b.phone, email: b.email, visits: 0, last: '', spent: 0 };
+    if (b.status === 'completed') {
+      map[key].visits++;
+      if (!map[key].last || b.date > map[key].last) map[key].last = b.service.split(' —')[0];
+      if (b.finalPrice) map[key].spent += b.finalPrice;
+    }
+  });
+  document.getElementById('customersTbody').innerHTML = Object.values(map).map(c => `
+    <tr>
+      <td>${c.name}</td><td>${c.phone}</td><td style="font-size:0.8rem;color:rgba(255,255,255,0.5)">${c.email}</td>
+      <td>${c.visits}</td><td>${c.last}</td><td>RM ${c.spent.toFixed(0)}</td>
+    </tr>
+  `).join('');
+}
+
+function updateStatus(id, status) {
+  const b = bookings.find(b => b.id === id);
+  if (!b) return;
+  b.status = status;
+  saveAllData();
+  updateAllViews();
+  showToast(`Booking ${status} ✦`);
+}
+
+function completeBooking(id) {
+  const b = bookings.find(b => b.id === id);
+  if (!b) return;
+  const finalService = prompt('Final service delivered', b.service);
+  if (finalService === null) return;
+  const price = parseFloat(prompt('Final price (RM)', ''));
+  if (isNaN(price)) return showToast('Invalid price');
+  b.finalService = finalService;
+  b.finalPrice = price;
+  b.status = 'completed';
+  saveAllData();
+  updateAllViews();
+  showToast('Booking completed ✦');
+}
+
+function editBooking(id) {
+  const b = bookings.find(b => b.id === id);
+  if (!b) return;
+  const newDate = prompt('New date (YYYY-MM-DD)', b.date);
+  if (!newDate) return;
+  const newTime = prompt('New time (e.g. 2:00 PM)', b.time);
+  if (!newTime) return;
+  const newService = prompt('New service', b.service);
+  if (!newService) return;
+  b.date = newDate; b.time = newTime; b.service = newService;
+  saveAllData();
+  updateAllViews();
+  showToast('Booking edited ✦');
+}
+
+function notifyWA(id) {
+  const b = bookings.find(b => b.id === id);
+  if (!b) return;
+  const msg = encodeURIComponent(`Hi ${b.fname}! ✨ Your appointment with Nails by Rey is confirmed for ${b.date} at ${b.time}. Service: ${b.service.split(' —')[0]}. See you soon! — Rey 💅`);
+  window.open(`https://wa.me/${b.phone.replace(/\D/g,'')}?text=${msg}`, '_blank');
+}
+
+function searchBookings(val) { renderBookingsTable(val); }
+
+function exportBookingsCSV() {
+  const headers = ['ID','First','Last','Phone','Email','Service','Date','Time','Notes','Discount','Status','Final Service','Final Price'];
+  const rows = bookings.map(b => [b.id, b.fname, b.lname, b.phone, b.email, b.service, b.date, b.time, b.notes, b.code, b.status, b.finalService || '', b.finalPrice || '']);
+  downloadCSV([headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n'), 'bookings.csv');
+  showToast('Bookings CSV exported ✦');
+}
+
+function exportCustomersCSV() {
+  const map = {};
+  bookings.forEach(b => {
+    const key = b.phone;
+    if (!map[key]) map[key] = { name: `${b.fname} ${b.lname}`, phone: b.phone, email: b.email, visits: 0, last: '', spent: 0 };
+    if (b.status === 'completed') {
+      map[key].visits++;
+      if (!map[key].last || b.date > map[key].last) map[key].last = b.service.split(' —')[0];
+      if (b.finalPrice) map[key].spent += b.finalPrice;
+    }
+  });
+  const headers = ['Name','Phone','Email','Visits','Last Service','Total Spent (RM)'];
+  const rows = Object.values(map).map(c => [c.name, c.phone, c.email, c.visits, c.last, c.spent.toFixed(0)]);
+  downloadCSV([headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n'), 'customers.csv');
+  showToast('Customers CSV exported ✦');
+}
+
+function downloadCSV(content, filename) {
+  const blob = new Blob(['\uFEFF' + content], { type: 'text/csv;charset=utf-8;' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
 }
 
 function updateAllViews() {
@@ -1274,12 +1041,48 @@ function updateAllViews() {
   renderCustomersTable();
 }
 
-// Scroll reveal & scroll spy
+// ═══════════════════════════════════════════
+//  TABS, TOAST, LOGIN, HAMBURGER
+// ═══════════════════════════════════════════
+function switchTab(id, btn) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function checkAdminPw() {
+  if (document.getElementById('adminPwInput').value === ADMIN_PASSWORD) {
+    document.getElementById('adminGate').style.display = 'none';
+    document.getElementById('adminDash').style.display = 'block';
+    sessionStorage.setItem('nbrAdmin', '1');
+    updateAllViews(); renderDiscountsTable(); renderGalleryManager();
+  } else {
+    document.getElementById('gateError').style.display = 'block';
+  }
+}
+
+function logoutAdmin() {
+  sessionStorage.removeItem('nbrAdmin');
+  document.getElementById('adminGate').style.display = 'block';
+  document.getElementById('adminDash').style.display = 'none';
+}
+
+// ═══════════════════════════════════════════
+//  SCROLL REVEAL & SCROLLSPY
+// ═══════════════════════════════════════════
 (function() {
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold:0.15, rootMargin:'0px 0px -50px 0px' });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
   revealEls.forEach(el => observer.observe(el));
 
   const sections = document.querySelectorAll('section[id]');
@@ -1293,34 +1096,14 @@ function updateAllViews() {
     });
     links.forEach(l => {
       l.classList.remove('active');
-      if (l.getAttribute('href') === '#'+current) l.classList.add('active');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
     });
-  }, { passive:true });
+  }, { passive: true });
 })();
 
-// Admin login
-function checkAdminPw() {
-  if (document.getElementById('adminPwInput').value === ADMIN_PASSWORD) {
-    document.getElementById('adminGate').style.display = 'none';
-    document.getElementById('adminDash').style.display = 'block';
-    sessionStorage.setItem('nbrAdmin','1');
-    updateAllViews(); renderDiscountsTable(); renderGalleryManager();
-  } else {
-    document.getElementById('gateError').style.display = 'block';
-  }
-}
-function logoutAdmin() {
-  sessionStorage.removeItem('nbrAdmin');
-  document.getElementById('adminGate').style.display = 'block';
-  document.getElementById('adminDash').style.display = 'none';
-}
-
-// Hamburger
-document.getElementById('hamburgerBtn').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('show');
-});
-
-// Startup
+// ═══════════════════════════════════════════
+//  STARTUP
+// ═══════════════════════════════════════════
 (async function() {
   await initData();
   renderGallery();
@@ -1334,6 +1117,14 @@ document.getElementById('hamburgerBtn').addEventListener('click', () => {
     renderDiscountsTable();
     renderGalleryManager();
   }
+
+  // Hamburger menu
+  document.getElementById('hamburgerBtn').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('show');
+  });
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('show'));
+  });
 })();
 </script>
 </body>
