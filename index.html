@@ -896,7 +896,7 @@ function submitBooking() {
   document.getElementById('successMsg').textContent = `Hi ${fname}! Rey will confirm your ${service} on ${bdate} at ${btime} shortly via WhatsApp. 💅`;
   updateAllViews();
 
-  const adminMsg = encodeURIComponent(`🔔 New Booking\n\n${fname} ${newBooking.lname}\n${service}\n${bdate} at ${btime}\nPhone: ${phone}\nNotes: ${newBooking.notes || 'none'}`);
+  const adminMsg = encodeURIComponent(`New Booking for Nails by Rey\n\n${fname} ${newBooking.lname}\n${service}\n${bdate} at ${btime}\nPhone: ${phone}\nNotes: ${newBooking.notes || 'none'}`);
   window.open(`https://wa.me/${ADMIN_WA}?text=${adminMsg}`, '_blank');
 }
 
