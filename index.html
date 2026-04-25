@@ -7,379 +7,155 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --rose: #f2c4ce;
-    --rose-deep: #c97d8e;
-    --rose-dark: #7a3a4a;
-    --cream: #fdf6f0;
-    --blush: #faeaea;
-    --gold: #c9a96e;
-    --gold-light: #f0e4ca;
-    --ink: #2a1f1f;
-    --muted: #7a6a6a;
-    --white: #ffffff;
-    --card-border: rgba(201,169,110,0.25);
-    --shadow: 0 4px 30px rgba(42,31,31,0.08);
+    --rose: #f2c4ce; --rose-deep: #c97d8e; --rose-dark: #7a3a4a;
+    --cream: #fdf6f0; --blush: #faeaea; --gold: #c9a96e; --gold-light: #f0e4ca;
+    --ink: #2a1f1f; --muted: #7a6a6a; --white: #ffffff;
+    --card-border: rgba(201,169,110,0.25); --shadow: 0 4px 30px rgba(42,31,31,0.08);
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); overflow-x:hidden; }
 
   /* SCROLL REVEAL */
-  .reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
-  }
-  .reveal.reveal-left  { transform: translateX(-40px); }
-  .reveal.reveal-right { transform: translateX(40px); }
-  .reveal.reveal-scale { transform: scale(0.92); }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0) translateX(0) scale(1);
-  }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-  .reveal-delay-5 { transition-delay: 0.5s; }
-  .reveal-delay-6 { transition-delay: 0.6s; }
+  .reveal { opacity:0; transform:translateY(32px); transition:opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.reveal-left  { transform:translateX(-40px); }
+  .reveal.reveal-right { transform:translateX(40px); }
+  .reveal.visible { opacity:1; transform:translateY(0) translateX(0) scale(1); }
+  .reveal-delay-1{transition-delay:0.1s} .reveal-delay-2{transition-delay:0.2s}
+  .reveal-delay-3{transition-delay:0.3s} .reveal-delay-4{transition-delay:0.4s}
 
   /* NAV */
-  nav { transition: height 0.3s ease, box-shadow 0.3s ease, background 0.3s ease; }
-  nav.scrolled {
-    height: 52px;
-    box-shadow: 0 2px 20px rgba(42,31,31,0.08);
-    background: rgba(253,246,240,0.97);
-  }
-  .nav-links a { position: relative; }
-  .nav-links a.active {
-    color: var(--rose-dark) !important;
-    font-weight: 500;
-  }
-  .nav-links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--rose-dark);
-    transition: width 0.2s;
-  }
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(253,246,240,0.92); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--card-border);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 3rem; height: 64px;
-  }
-  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; letter-spacing: 0.05em; color: var(--rose-dark); }
-  .nav-logo a { color: inherit; text-decoration: none; }
-  .nav-logo span { color: var(--gold); font-style: italic; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--rose-dark); }
-  .nav-book { background: var(--rose-dark); color: white !important; padding: 0.45rem 1.2rem; border-radius: 2rem; font-size: 0.78rem !important; }
-  .nav-book:hover { background: var(--rose-deep); color: white !important; }
-
-  .hamburger { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--rose-dark); padding: 0.5rem; z-index: 101; }
-
-  @media (max-width: 768px) {
-    nav { padding: 0 1.2rem; }
-    .hamburger { display: block; }
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(253,246,240,0.98);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--card-border);
-      flex-direction: column;
-      gap: 0;
-      padding: 1rem 0;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-    }
-    .nav-links.show { display: flex; }
-    .nav-links li { text-align: center; }
-    .nav-links a { display: block; padding: 0.8rem 1rem; }
-    .nav-book { display: inline-block; margin: 0.5rem auto; width: fit-content; }
-  }
+  nav { position:fixed; top:0; width:100%; z-index:100; background:rgba(253,246,240,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--card-border); display:flex; align-items:center; justify-content:space-between; padding:0 3rem; height:64px; transition:height 0.3s,box-shadow 0.3s,background 0.3s; }
+  nav.scrolled { height:52px; box-shadow:0 2px 20px rgba(42,31,31,0.08); background:rgba(253,246,240,0.97); }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; letter-spacing:0.05em; color:var(--rose-dark); }
+  .nav-logo a { color:inherit; text-decoration:none; }
+  .nav-logo span { color:var(--gold); font-style:italic; }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { font-size:0.82rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; position:relative; }
+  .nav-links a:hover, .nav-links a.active { color:var(--rose-dark); }
+  .nav-links a.active::after { content:''; position:absolute; bottom:-4px; left:0; width:100%; height:2px; background:var(--rose-dark); }
+  .nav-book { background:var(--rose-dark) !important; color:white !important; padding:0.45rem 1.2rem; border-radius:2rem; font-size:0.78rem !important; }
+  .nav-book:hover { background:var(--rose-deep) !important; }
+  .hamburger { display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--rose-dark); padding:0.5rem; z-index:101; }
 
   /* HERO */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    text-align: center; padding: 120px 2rem 4rem;
-    background: linear-gradient(160deg, var(--cream) 60%, var(--blush) 100%);
-    position: relative; overflow: hidden;
-  }
-  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(242,196,206,0.35) 0%, transparent 70%); }
-  .hero::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(201,169,110,0.2) 0%, transparent 70%); }
-  .hero-badge { display: inline-block; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-light); padding: 0.3rem 1rem; border-radius: 2rem; margin-bottom: 1.5rem; }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 8vw, 6.5rem); font-weight: 300; line-height: 1.05; color: var(--rose-dark); margin-bottom: 0.3rem; }
-  .hero h1 em { font-style: italic; color: var(--gold); }
-  .hero-sub { font-size: 1rem; color: var(--muted); margin: 1.2rem auto 2.4rem; max-width: 380px; line-height: 1.7; }
-  .btn { display: inline-block; padding: 0.85rem 2.2rem; border-radius: 2rem; font-size: 0.88rem; letter-spacing: 0.06em; text-decoration: none; cursor: pointer; border: none; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
-  .btn-primary { background: var(--rose-dark); color: white; }
-  .btn-primary:hover { background: var(--rose-deep); transform: translateY(-1px); }
-  .btn-outline { border: 1px solid var(--rose-dark); color: var(--rose-dark); background: transparent; margin-left: 1.5rem; } /* added more spacing */
-  .btn-outline:hover { background: var(--rose-dark); color: white; transform: translateY(-1px); }
+  .hero { min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:120px 2rem 4rem; background:linear-gradient(160deg,var(--cream) 60%,var(--blush) 100%); position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-80px; right:-80px; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle,rgba(242,196,206,0.35) 0%,transparent 70%); }
+  .hero::after  { content:''; position:absolute; bottom:-60px; left:-60px; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(201,169,110,0.2) 0%,transparent 70%); }
+  .hero-badge { display:inline-block; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold-light); padding:0.3rem 1rem; border-radius:2rem; margin-bottom:1.5rem; }
+  .hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3.2rem,8vw,6.5rem); font-weight:300; line-height:1.05; color:var(--rose-dark); margin-bottom:0.3rem; }
+  .hero h1 em { font-style:italic; color:var(--gold); }
+  .hero-sub { font-size:1rem; color:var(--muted); margin:1.2rem auto 2.4rem; max-width:380px; line-height:1.7; }
+  .btn { display:inline-block; padding:0.85rem 2.2rem; border-radius:2rem; font-size:0.88rem; letter-spacing:0.06em; text-decoration:none; cursor:pointer; border:none; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
+  .btn-primary { background:var(--rose-dark); color:white; }
+  .btn-primary:hover { background:var(--rose-deep); transform:translateY(-1px); }
+  .btn-outline { border:1px solid var(--rose-dark); color:var(--rose-dark); background:transparent; }
+  .btn-outline:hover { background:var(--rose-dark); color:white; transform:translateY(-1px); }
 
   /* SOCIAL STRIP */
-  .socials-strip {
-    background: var(--rose-dark); padding: 1rem 3rem;
-    display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;
-  }
-  .socials-strip a { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.05em; transition: color 0.2s; }
-  .socials-strip a:hover { color: var(--gold-light); }
-  .social-icon { width: 28px; height: 28px; background: rgba(255,255,255,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+  .socials-strip { background:var(--rose-dark); padding:1rem 3rem; display:flex; align-items:center; justify-content:center; gap:2rem; flex-wrap:wrap; }
+  .socials-strip a { display:flex; align-items:center; gap:0.5rem; color:rgba(255,255,255,0.85); text-decoration:none; font-size:0.82rem; transition:color 0.2s; }
+  .socials-strip a:hover { color:var(--gold-light); }
+  .social-icon { width:28px; height:28px; background:rgba(255,255,255,0.12); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; }
 
   /* SECTIONS */
-  section { padding: 5rem 2rem; }
-  .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--rose-dark); margin-bottom: 0.5rem; }
-  .section-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.7; max-width: 460px; }
-  .section-header { text-align: center; margin-bottom: 3.5rem; }
-  .section-header .section-desc { margin: 0 auto; }
-  .container { max-width: 1100px; margin: 0 auto; }
+  section { padding:5rem 2rem; }
+  .section-label { font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3rem); font-weight:300; color:var(--rose-dark); margin-bottom:0.5rem; }
+  .section-desc { color:var(--muted); font-size:0.95rem; line-height:1.7; max-width:460px; }
+  .section-header { text-align:center; margin-bottom:3.5rem; }
+  .section-header .section-desc { margin:0 auto; }
+  .container { max-width:1100px; margin:0 auto; }
 
-  /* GALLERY TABS */
-  .gallery-tabs { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
-  .gallery-tab { padding: 0.5rem 1.5rem; border-radius: 2rem; border: 1px solid var(--card-border); background: transparent; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; color: var(--muted); }
-  .gallery-tab.active, .gallery-tab:hover { background: var(--rose-dark); color: white; border-color: var(--rose-dark); }
-
-  #gallery { background: var(--white); }
-  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-  .gallery-item {
-    aspect-ratio: 1; border-radius: 12px; overflow: hidden; cursor: pointer;
-    position: relative; background: var(--blush);
-  }
-  .gallery-item-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.4rem; transition: transform 0.3s; }
-  .gallery-item:hover .gallery-item-inner { transform: scale(1.03); }
-  .gallery-nail-art { font-size: 2.5rem; }
-  .gallery-tag { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
-  .gallery-overlay { position: absolute; inset: 0; background: rgba(122,58,74,0.75); opacity: 0; transition: opacity 0.25s; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.3rem; color: white; }
-  .gallery-item:hover .gallery-overlay { opacity: 1; }
-  .gallery-overlay-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; }
-  .gallery-overlay-tag { font-size: 0.72rem; letter-spacing: 0.1em; opacity: 0.8; }
+  /* GALLERY */
+  #gallery { background:var(--white); }
+  .gallery-tabs { display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem; }
+  .gallery-tab { padding:0.5rem 1.5rem; border-radius:2rem; border:1px solid var(--card-border); background:transparent; font-size:0.82rem; font-family:'DM Sans',sans-serif; cursor:pointer; transition:all 0.2s; color:var(--muted); }
+  .gallery-tab.active,.gallery-tab:hover { background:var(--rose-dark); color:white; border-color:var(--rose-dark); }
+  .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; }
+  .gallery-item { aspect-ratio:1; border-radius:12px; overflow:hidden; cursor:pointer; position:relative; background:var(--blush); }
+  .gallery-item-inner { width:100%; height:100%; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.4rem; transition:transform 0.3s; }
+  .gallery-item:hover .gallery-item-inner { transform:scale(1.03); }
+  .gallery-nail-art { font-size:2.5rem; }
+  .gallery-tag { font-size:0.7rem; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+  .gallery-overlay { position:absolute; inset:0; background:rgba(122,58,74,0.75); opacity:0; transition:opacity 0.25s; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.3rem; color:white; }
+  .gallery-item:hover .gallery-overlay { opacity:1; }
+  .gallery-overlay-title { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; }
+  .gallery-overlay-tag { font-size:0.72rem; letter-spacing:0.1em; opacity:0.8; }
 
   /* PRICING */
-  #pricing { background: var(--cream); }
-  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-  .pricing-card {
-    background: var(--white); border: 1px solid var(--card-border); border-radius: 16px; padding: 2rem;
-    position: relative; transition: box-shadow 0.2s, transform 0.2s;
-  }
-  .pricing-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
-  .pricing-card.featured { border-color: var(--gold); border-width: 1.5px; }
-  .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gold); color: white; font-size: 0.7rem; letter-spacing: 0.1em; padding: 0.25rem 0.9rem; border-radius: 2rem; white-space: nowrap; }
-  .pricing-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-  .pricing-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--rose-dark); margin-bottom: 0.3rem; }
-  .pricing-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1.2rem; }
-  .pricing-price { font-size: 1.8rem; font-weight: 300; color: var(--ink); }
-  .pricing-price span { font-size: 1rem; color: var(--muted); }
-  .pricing-items { list-style: none; margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .pricing-items li { font-size: 0.83rem; color: var(--muted); padding-left: 1.2rem; position: relative; }
-  .pricing-items li::before { content: '✦'; position: absolute; left: 0; font-size: 0.5rem; color: var(--gold); top: 0.25rem; }
-  .pricing-divider { height: 1px; background: var(--card-border); margin: 1.2rem 0; }
-  .discount-tag { display: inline-block; background: var(--blush); color: var(--rose-deep); font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 2rem; margin-top: 0.6rem; } /* kept for possible future, but not used */
+  #pricing { background:var(--cream); }
+  .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+  .pricing-card { background:var(--white); border:1px solid var(--card-border); border-radius:16px; padding:2rem; position:relative; transition:box-shadow 0.2s,transform 0.2s; }
+  .pricing-card:hover { box-shadow:var(--shadow); transform:translateY(-3px); }
+  .pricing-card.featured { border-color:var(--gold); border-width:1.5px; }
+  .featured-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:white; font-size:0.7rem; letter-spacing:0.1em; padding:0.25rem 0.9rem; border-radius:2rem; white-space:nowrap; }
+  .pricing-icon { font-size:1.8rem; margin-bottom:0.8rem; }
+  .pricing-name { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:400; color:var(--rose-dark); margin-bottom:0.3rem; }
+  .pricing-desc { font-size:0.82rem; color:var(--muted); line-height:1.5; margin-bottom:1.2rem; }
+  .pricing-price { font-size:1.8rem; font-weight:300; color:var(--ink); }
+  .pricing-price span { font-size:1rem; color:var(--muted); }
+  .pricing-items { list-style:none; margin-top:1.2rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .pricing-items li { font-size:0.83rem; color:var(--muted); padding-left:1.2rem; position:relative; }
+  .pricing-items li::before { content:'✦'; position:absolute; left:0; font-size:0.5rem; color:var(--gold); top:0.25rem; }
+  .pricing-divider { height:1px; background:var(--card-border); margin:1.2rem 0; }
 
   /* BOOKING */
-  #booking { background: var(--white); }
-  .booking-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
-  .booking-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--rose-dark); margin-bottom: 1rem; }
-  .booking-info p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
-  .booking-steps { display: flex; flex-direction: column; gap: 1rem; }
-  .booking-step { display: flex; align-items: flex-start; gap: 0.8rem; }
-  .step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--rose-dark); color: white; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.15rem; }
-  .step-text { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-  .step-text strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 0.1rem; }
+  #booking { background:var(--white); }
+  .booking-wrap { display:grid; grid-template-columns:1fr 1.2fr; gap:3rem; align-items:start; }
+  .booking-info h3 { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:var(--rose-dark); margin-bottom:1rem; }
+  .booking-info p { font-size:0.9rem; color:var(--muted); line-height:1.7; margin-bottom:1.5rem; }
+  .booking-steps { display:flex; flex-direction:column; gap:1rem; }
+  .booking-step { display:flex; align-items:flex-start; gap:0.8rem; }
+  .step-num { width:26px; height:26px; border-radius:50%; background:var(--rose-dark); color:white; font-size:0.72rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.15rem; }
+  .step-text { font-size:0.85rem; color:var(--muted); line-height:1.5; }
+  .step-text strong { color:var(--ink); font-weight:500; display:block; margin-bottom:0.1rem; }
+  .booking-form { background:var(--cream); border-radius:16px; padding:2rem; border:1px solid var(--card-border); }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .form-group { margin-bottom:1.1rem; }
+  .form-group label { display:block; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-bottom:0.4rem; }
+  .form-group input, .form-group select, .form-group textarea { width:100%; padding:0.65rem 0.9rem; border:1px solid var(--card-border); border-radius:8px; font-size:0.9rem; background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; outline:none; transition:border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--rose-deep); }
+  .form-group textarea { resize:vertical; min-height:80px; }
+  .phone-wrap { display:flex; align-items:center; border:1px solid var(--card-border); border-radius:8px; background:var(--white); overflow:hidden; }
+  .phone-prefix { padding:0.65rem 0.75rem; font-size:0.9rem; color:var(--muted); background:var(--blush); border-right:1px solid var(--card-border); white-space:nowrap; }
+  .phone-wrap input { border:none; border-radius:0; flex:1; }
+  .phone-wrap input:focus { border:none; }
+  .form-submit { width:100%; padding:0.9rem; background:var(--rose-dark); color:white; border:none; border-radius:2rem; font-size:0.88rem; letter-spacing:0.06em; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; margin-top:0.5rem; }
+  .form-submit:hover { background:var(--rose-deep); transform:translateY(-1px); }
+  .booking-success { display:none; text-align:center; padding:2rem; }
+  .booking-success .check { font-size:2.5rem; margin-bottom:1rem; }
+  .booking-success h4 { font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--rose-dark); margin-bottom:0.5rem; }
+  .booking-success p { font-size:0.88rem; color:var(--muted); }
 
-  .booking-form { background: var(--cream); border-radius: 16px; padding: 2rem; border: 1px solid var(--card-border); }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-group { margin-bottom: 1.1rem; }
-  .form-group label { display: block; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 0.65rem 0.9rem; border: 1px solid var(--card-border);
-    border-radius: 8px; font-size: 0.9rem; background: var(--white); color: var(--ink);
-    font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--rose-deep); }
-  .form-group textarea { resize: vertical; min-height: 80px; }
-  .form-submit { width: 100%; padding: 0.9rem; background: var(--rose-dark); color: white; border: none; border-radius: 2rem; font-size: 0.88rem; letter-spacing: 0.06em; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
-  .form-submit:hover { background: var(--rose-deep); transform: translateY(-1px); }
-  .booking-success { display: none; text-align: center; padding: 2rem; }
-  .booking-success .check { font-size: 2.5rem; margin-bottom: 1rem; }
-  .booking-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--rose-dark); margin-bottom: 0.5rem; }
-  .booking-success p { font-size: 0.88rem; color: var(--muted); }
+  /* MULTI-SELECT */
+  .multi-select-wrap { position:relative; }
+  .multi-select-display { width:100%; padding:0.65rem 0.9rem; border:1px solid var(--card-border); border-radius:8px; font-size:0.9rem; background:var(--white); color:var(--ink); font-family:'DM Sans',sans-serif; cursor:pointer; user-select:none; transition:border-color 0.2s; }
+  .multi-select-display:hover { border-color:var(--rose-deep); }
+  .multi-select-options { display:none; position:absolute; top:calc(100% + 4px); left:0; right:0; background:var(--white); border:1px solid var(--card-border); border-radius:8px; box-shadow:0 8px 24px rgba(42,31,31,0.12); z-index:50; padding:0.4rem 0; max-height:220px; overflow-y:auto; }
+  .multi-select-options.open { display:block; }
+  .multi-option { display:flex; align-items:center; gap:0.6rem; padding:0.55rem 1rem; font-size:0.88rem; color:var(--ink); cursor:pointer; transition:background 0.15s; }
+  .multi-option:hover { background:var(--blush); }
+  .multi-option input[type=checkbox] { accent-color:var(--rose-dark); width:15px; height:15px; cursor:pointer; }
 
-  /* CHECKBOX GROUP */
-  .checkbox-group { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-  .checkbox-group label { display: flex; align-items: center; gap: 0.3rem; font-size: 0.9rem; color: var(--ink); cursor: pointer; }
+  footer { background:var(--rose-dark); color:rgba(255,255,255,0.7); text-align:center; padding:2rem; font-size:0.82rem; }
+  footer a { color:var(--rose); text-decoration:none; }
+  .toast { position:fixed; bottom:2rem; right:2rem; background:var(--rose-dark); color:white; padding:0.9rem 1.5rem; border-radius:10px; font-size:0.85rem; box-shadow:0 8px 30px rgba(0,0,0,0.2); transform:translateY(80px); opacity:0; transition:all 0.3s; z-index:999; }
+  .toast.show { transform:translateY(0); opacity:1; }
 
-  /* PHONE PREFIX */
-  .phone-wrap { display: flex; align-items: center; gap: 0; }
-  .phone-prefix { background: var(--rose-dark); color: white; padding: 0.65rem 0.9rem; border-radius: 8px 0 0 8px; font-size: 0.9rem; white-space: nowrap; }
-  .phone-wrap input { flex: 1; border-radius: 0 8px 8px 0 !important; }
-
-  /* ADMIN */
-  #admin { background: var(--ink); color: white; }
-  #admin .section-label { color: var(--rose); }
-  #admin .section-title { color: white; }
-  .admin-tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-  .admin-tab { padding: 0.5rem 1.2rem; border-radius: 2rem; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 0.8rem; cursor: pointer; transition: all 0.2s; background: transparent; font-family: 'DM Sans', sans-serif; }
-  .admin-tab.active { background: var(--rose-dark); color: white; border-color: var(--rose-dark); }
-  .admin-panel { display: none; }
-  .admin-panel.active { display: block; }
-  .admin-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-  .admin-table th { text-align: left; padding: 0.7rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); font-weight: 400; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; }
-  .admin-table td { padding: 0.8rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
-  .status-badge { display: inline-block; padding: 0.2rem 0.7rem; border-radius: 2rem; font-size: 0.7rem; }
-  .status-confirmed { background: rgba(100,180,120,0.2); color: #7edd9a; }
-  .status-pending { background: rgba(201,169,110,0.2); color: var(--gold-light); }
-  .status-cancelled { background: rgba(200,80,80,0.2); color: #f5a0a0; }
-  .status-completed { background: rgba(100,120,200,0.2); color: #b3c5ff; }
-  .admin-action { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); padding: 0.2rem 0.7rem; border-radius: 2rem; font-size: 0.72rem; cursor: pointer; font-family: 'DM Sans', sans-serif; margin-right: 0.3rem; transition: all 0.15s; }
-  .admin-action:hover { border-color: var(--rose); color: var(--rose); }
-  .admin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-  .admin-stat { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 1rem; text-align: center; }
-  .admin-stat-val { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--rose); }
-  .admin-stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-top: 0.2rem; letter-spacing: 0.05em; }
-  .admin-export-btn { margin-left: 0.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 1rem; border-radius: 2rem; color: rgba(255,255,255,0.8); font-size: 0.75rem; cursor: pointer; font-family: 'DM Sans', sans-serif; }
-  .pagination { display: flex; gap: 0.5rem; margin-top: 1rem; }
-  .pagination button { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: white; padding: 0.3rem 0.7rem; border-radius: 6px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; }
-  .pagination button.active { background: var(--rose-dark); border-color: var(--rose-dark); }
-
-  /* ADMIN GATE */
-  .admin-gate {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 20px;
-    padding: 3rem 2rem;
-    max-width: 460px;
-    margin: 2rem auto;
-    text-align: center;
-    backdrop-filter: blur(12px);
-  }
-  .admin-gate h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: white; margin-bottom: 0.5rem; }
-  .admin-gate p { color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-bottom: 1.8rem; }
-  .admin-gate .pw-row { display: flex; gap: 0.5rem; justify-content: center; align-items: center; }
-  .admin-gate input {
-    padding: 0.75rem 1.2rem;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 12px;
-    color: white;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    outline: none;
-    width: 220px;
-    letter-spacing: 0.1em;
-  }
-  .admin-gate input:focus { border-color: var(--rose); }
-  .admin-gate button {
-    padding: 0.75rem 1.8rem;
-    background: var(--rose-dark);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    white-space: nowrap;
-  }
-  .admin-gate button:hover { background: var(--rose-deep); }
-  .gate-error { color: #f5a0a0; font-size: 0.82rem; margin-top: 0.8rem; display: none; }
-
-  /* GALLERY UPLOAD */
-  .gallery-upload-zone {
-    border: 2px dashed rgba(255,255,255,0.25);
-    border-radius: 24px;
-    padding: 3.5rem 2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-    margin-bottom: 1.5rem;
-    background: rgba(255,255,255,0.02);
-  }
-  .gallery-upload-zone:hover, .gallery-upload-zone.dragover { border-color: var(--rose); background: rgba(255,255,255,0.04); }
-  .gallery-upload-zone input[type=file] { display: none; }
-  .upload-icon { font-size: 3rem; margin-bottom: 0.8rem; opacity: 0.8; }
-  .upload-label { font-size: 1rem; color: rgba(255,255,255,0.65); font-weight: 400; }
-  .upload-label span { color: var(--rose); text-decoration: underline; cursor: pointer; font-weight: 500; }
-  .upload-meta {
-    display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; align-items: center;
-    background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .upload-meta input, .upload-meta select {
-    padding: 0.65rem 1rem; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; flex: 1; min-width: 140px;
-  }
-  .upload-meta input::placeholder { color: rgba(255,255,255,0.3); }
-  .upload-meta select option { background: #2a1f1f; }
-  .upload-preview { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid var(--rose); display: none; }
-  .gallery-mgr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
-  .gallery-mgr-item { position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 1; background: rgba(255,255,255,0.05); }
-  .gallery-mgr-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .gallery-mgr-info { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); padding: 0.4rem 0.6rem; }
-  .gallery-mgr-name { font-size: 0.72rem; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .gallery-mgr-tag { font-size: 0.65rem; color: var(--rose); }
-  .gallery-mgr-del { position: absolute; top: 6px; right: 6px; width: 24px; height: 24px; border-radius: 50%; background: rgba(180,50,50,0.85); color: white; border: none; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; }
-  .gallery-mgr-item:hover .gallery-mgr-del { opacity: 1; }
-  .gallery-mgr-empty { color: rgba(255,255,255,0.3); font-size: 0.88rem; text-align: center; padding: 2rem; }
-
-  /* MULTI-SELECT DROPDOWN */
-  .multi-select-wrap { position: relative; }
-  .multi-select-display {
-    width: 100%; padding: 0.65rem 0.9rem; border: 1px solid var(--card-border);
-    border-radius: 8px; font-size: 0.9rem; background: var(--white); color: var(--ink);
-    font-family: 'DM Sans', sans-serif; cursor: pointer; user-select: none;
-    transition: border-color 0.2s;
-  }
-  .multi-select-display:hover { border-color: var(--rose-deep); }
-  .multi-select-options {
-    display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0;
-    background: var(--white); border: 1px solid var(--card-border); border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(42,31,31,0.12); z-index: 50; padding: 0.4rem 0;
-    max-height: 220px; overflow-y: auto;
-  }
-  .multi-select-options.open { display: block; }
-  .multi-option {
-    display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 1rem;
-    font-size: 0.88rem; color: var(--ink); cursor: pointer; transition: background 0.15s;
-  }
-  .multi-option:hover { background: var(--blush); }
-  .multi-option input[type=checkbox] { accent-color: var(--rose-dark); width: 15px; height: 15px; cursor: pointer; }
-
-  footer { background: var(--rose-dark); color: rgba(255,255,255,0.7); text-align: center; padding: 2rem; font-size: 0.82rem; }
-  footer a { color: var(--rose); text-decoration: none; }
-
-  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--rose-dark); color: white; padding: 0.9rem 1.5rem; border-radius: 10px; font-size: 0.85rem; box-shadow: 0 8px 30px rgba(0,0,0,0.2); transform: translateY(80px); opacity: 0; transition: all 0.3s; z-index: 999; }
-  .toast.show { transform: translateY(0); opacity: 1; }
-
-  @media (max-width: 768px) {
-    .booking-wrap { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .admin-tabs { justify-content: center; }
-    .admin-export-btn { margin-left: 0; margin-top: 0.5rem; }
-    .admin-search { flex-direction: column; }
-    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .upload-meta { flex-direction: column; align-items: stretch; }
-    .upload-meta input, .upload-meta select, .upload-meta button { min-width: auto; }
-    .gallery-upload-zone { padding: 2rem 1rem; }
-    .admin-gate .pw-row { flex-direction: column; align-items: stretch; }
-    .admin-gate input { width: 100%; }
+  @media (max-width:768px) {
+    nav { padding:0 1.2rem; }
+    .hamburger { display:block; }
+    .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:rgba(253,246,240,0.98); backdrop-filter:blur(12px); border-bottom:1px solid var(--card-border); flex-direction:column; gap:0; padding:1rem 0; }
+    .nav-links.show { display:flex; }
+    .nav-links li { text-align:center; }
+    .nav-links a { display:block; padding:0.8rem 1rem; }
+    .booking-wrap { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
   }
 </style>
 </head>
 <body>
-<!-- Hidden iframe for form POST (write) -->
-<iframe name="hiddenFrame" style="display:none;"></iframe>
-
-<!-- NAV -->
 <nav>
   <div class="nav-logo"><a href="#home">Nails <span>by Rey</span></a></div>
   <button class="hamburger" id="hamburgerBtn" aria-label="Menu">☰</button>
@@ -387,12 +163,10 @@
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#booking">Book</a></li>
-    <li id="adminNavItem" style="display:none;"><a href="#admin">Admin</a></li>
     <li><a href="#booking" class="nav-book">Book Now</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-badge reveal">✦ Professional Nail Artist · Kajang, Selangor</div>
@@ -400,12 +174,11 @@
     <p class="hero-sub reveal reveal-delay-2">Artisan nail care by Vive Reytchel — where every set is a tiny masterpiece crafted just for you.</p>
     <div class="reveal reveal-delay-3" style="display:flex;flex-direction:column;align-items:center;gap:0.8rem;">
       <a href="#booking" class="btn btn-primary" style="width:220px;text-align:center;">Book a Session</a>
-      <a href="#gallery" class="btn btn-outline" style="width:220px;text-align:center;margin-left:0;">View Gallery</a>
+      <a href="#gallery" class="btn btn-outline" style="width:220px;text-align:center;">View Gallery</a>
     </div>
   </div>
 </section>
 
-<!-- SOCIALS STRIP -->
 <div class="socials-strip">
   <a href="https://wa.me/60176445338" target="_blank"><div class="social-icon">💬</div> WhatsApp · 017-6445338</a>
   <a href="https://www.tiktok.com/@vvrffl?_r=1&_t=ZS-95o2VY5Mn0Z" target="_blank"><div class="social-icon">🎵</div> TikTok</a>
@@ -413,7 +186,6 @@
   <a href="https://share.google/7JEGGSGxxBMlOVL1J" target="_blank"><div class="social-icon">📍</div> Kajang Utama (Home-based)</a>
 </div>
 
-<!-- GALLERY -->
 <section id="gallery">
   <div class="container">
     <div class="section-header">
@@ -423,17 +195,16 @@
     </div>
     <div class="gallery-tabs reveal reveal-delay-3" id="galleryTabs">
       <button class="gallery-tab active" data-tag="3d-arts">3D Arts</button>
-      <button class="gallery-tab" data-tag="cat-eye">Cat eye</button>
-      <button class="gallery-tab" data-tag="french-tips">French tips</button>
+      <button class="gallery-tab" data-tag="cat-eye">Cat Eye</button>
+      <button class="gallery-tab" data-tag="french-tips">French Tips</button>
       <button class="gallery-tab" data-tag="gel">Gel</button>
-      <button class="gallery-tab" data-tag="ombre">Ombre</button>
+      <button class="gallery-tab" data-tag="ombre">Ombré</button>
       <button class="gallery-tab" data-tag="others">Others</button>
     </div>
     <div class="gallery-grid" id="galleryGrid"></div>
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
   <div class="container">
     <div class="section-header">
@@ -442,35 +213,22 @@
       <p class="section-desc reveal reveal-delay-2">Transparent pricing for every service. All sets include nail prep, cuticle care & aftercare advice.</p>
     </div>
     <div class="pricing-grid">
-      <!-- Gel removal -->
       <div class="pricing-card reveal reveal-delay-1">
         <div class="pricing-icon">🔧</div>
         <div class="pricing-name">Gel Removal</div>
         <div class="pricing-desc">Safe and gentle gel removal without damaging your natural nails.</div>
         <div class="pricing-price"><span>from</span> RM 20 <span>/ session</span></div>
         <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Gel removal</li>
-          <li>Nail care after removal</li>
-          <li>Can book with new set</li>
-          <li>Gentle on natural nails</li>
-        </ul>
+        <ul class="pricing-items"><li>Gel removal</li><li>Nail care after removal</li><li>Can book with new set</li><li>Gentle on natural nails</li></ul>
       </div>
-      <!-- Manicure -->
       <div class="pricing-card reveal reveal-delay-1">
         <div class="pricing-icon">💅</div>
         <div class="pricing-name">Manicure</div>
         <div class="pricing-desc">Classic manicure — nail shaping, cuticle care and a clean finish.</div>
         <div class="pricing-price"><span>from</span> RM 10 <span>/ set</span></div>
         <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Nail shaping & filing</li>
-          <li>Cuticle care</li>
-          <li>Regular polish application</li>
-          <li>Quick & affordable</li>
-        </ul>
+        <ul class="pricing-items"><li>Nail shaping & filing</li><li>Cuticle care</li><li>Regular polish application</li><li>Quick & affordable</li></ul>
       </div>
-      <!-- Manicure + Gel -->
       <div class="pricing-card featured reveal reveal-delay-2">
         <div class="featured-badge">✦ Most Popular</div>
         <div class="pricing-icon">✨</div>
@@ -478,46 +236,28 @@
         <div class="pricing-desc">Full manicure with long-lasting gel colour that stays glossy for weeks.</div>
         <div class="pricing-price"><span>from</span> RM 30 <span>/ set</span></div>
         <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Full manicure included</li>
-          <li>Gel polish application</li>
-          <li>May combine various colours</li>
-          <li>Lasts 2–3 weeks</li>
-        </ul>
+        <ul class="pricing-items"><li>Full manicure included</li><li>Gel polish application</li><li>May combine various colours</li><li>Lasts 2–3 weeks</li></ul>
       </div>
-      <!-- Extensions -->
       <div class="pricing-card reveal reveal-delay-3">
         <div class="pricing-icon">💎</div>
         <div class="pricing-name">Add-on: Extensions</div>
         <div class="pricing-desc">Nail tip extensions for extra length — priced per piece.</div>
         <div class="pricing-price">RM 2 <span>/ piece</span></div>
         <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>Full set of 10 = RM 20</li>
-          <li>Mix & match length</li>
-          <li>Compatible with gel sets</li>
-          <li>Add to any service</li>
-        </ul>
+        <ul class="pricing-items"><li>Full set of 10 = RM 20</li><li>Mix & match length</li><li>Compatible with gel sets</li><li>Add to any service</li></ul>
       </div>
-      <!-- Nail Art -->
       <div class="pricing-card reveal reveal-delay-4">
         <div class="pricing-icon">🌸</div>
         <div class="pricing-name">Add-on: Nail Art</div>
         <div class="pricing-desc">Hand-painted nail art, cat eye, or French tips — stunning accent nails or full sets.</div>
         <div class="pricing-price"><span>from</span> RM 15 <span>/ set</span></div>
         <div class="pricing-divider"></div>
-        <ul class="pricing-items">
-          <li>3D art designs</li>
-          <li>Cat eye effect</li>
-          <li>French tips</li>
-          <li>Price varies by complexity</li>
-        </ul>
+        <ul class="pricing-items"><li>3D art designs</li><li>Cat eye effect</li><li>French / modern French</li><li>Price varies by complexity</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BOOKING -->
 <section id="booking">
   <div class="container">
     <div class="section-header">
@@ -528,12 +268,12 @@
     <div class="booking-wrap">
       <div class="booking-info reveal reveal-left">
         <h3>How It Works</h3>
-        <p>Booking takes under 2 minutes. After you submit, you'll receive a confirmation via WhatsApp.</p>
+        <p>Booking takes under 2 minutes. After you submit, Rey will confirm your slot via WhatsApp.</p>
         <div class="booking-steps">
           <div class="booking-step"><div class="step-num">1</div><div class="step-text"><strong>Choose Your Service</strong>Pick your preferred service and desired date/time.</div></div>
           <div class="booking-step"><div class="step-num">2</div><div class="step-text"><strong>Submit Your Request</strong>Fill in your contact details and any inspiration notes.</div></div>
           <div class="booking-step"><div class="step-num">3</div><div class="step-text"><strong>Get Confirmed</strong>Rey will confirm your slot via WhatsApp.</div></div>
-          <div class="booking-step"><div class="step-num">4</div><div class="step-text"><strong>Come & Create</strong>Arrive at your slot — sit back, relax and enjoy your new set.</div></div>
+          <div class="booking-step"><div class="step-num">4</div><div class="step-text"><strong>Come & Create</strong>Arrive at your slot and enjoy your new set!</div></div>
         </div>
       </div>
       <div class="reveal reveal-right">
@@ -566,102 +306,20 @@
           </div>
           <div class="form-row">
             <div class="form-group"><label>Preferred Date</label><input type="date" id="bdate" onchange="updateTimeOptions()"></div>
-            <div class="form-group"><label>Preferred Time</label><select id="btime"></select></div>
+            <div class="form-group"><label>Preferred Time</label><select id="btime"><option value="">Select date first</option></select></div>
           </div>
           <div class="form-group"><label>Inspo Notes</label><textarea id="notes" placeholder="Share any reference, colour ideas, or special requests..."></textarea></div>
           <button class="form-submit" onclick="submitBooking()">✦ Request Appointment</button>
         </div>
         <div class="booking-success" id="bookingSuccess">
-          <div class="check">🌸</div><h4>Booking Request Sent!</h4>
+          <div class="check">🌸</div>
+          <h4>Booking Request Sent!</h4>
           <p id="successMsg">Rey will confirm your slot shortly via WhatsApp. Can't wait to see you!</p>
           <div style="margin-top:1.2rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;">
-            <a href="https://wa.me/60176445338" target="_blank" class="btn btn-primary" style="font-size:0.82rem;width:220px;text-align:center;">Message on WhatsApp</a>
-            <button onclick="resetBookingForm()" class="btn btn-outline" style="font-size:0.82rem;width:220px;text-align:center;margin-left:0;">Book Another Appointment</button>
+            <a href="https://wa.me/60176445338" target="_blank" class="btn btn-primary" style="width:220px;text-align:center;font-size:0.82rem;">Message on WhatsApp</a>
+            <button onclick="resetBookingForm()" class="btn btn-outline" style="width:220px;text-align:center;font-size:0.82rem;">Book Another Appointment</button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ADMIN PANEL — hidden from public, revealed via ?admin or #admin-access -->
-<section id="admin" style="display:none;">
-  <div class="container">
-    <div class="section-header" style="text-align:left;">
-      <div class="section-label">Management</div>
-      <h2 class="section-title">Admin Dashboard</h2>
-    </div>
-    <div id="adminGate" class="admin-gate">
-      <h3>🔐 Admin Access</h3>
-      <p>Enter the password to manage bookings, gallery and discounts.</p>
-      <div class="pw-row">
-        <input type="password" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter')checkAdminPw()">
-        <button onclick="checkAdminPw()">Enter</button>
-      </div>
-      <div class="gate-error" id="gateError">Incorrect password. Try again.</div>
-      <p style="margin-top:1.5rem;font-size:0.75rem;color:rgba(255,255,255,0.25);">Default: <code style="color:var(--rose)">nailsbyrey2025</code> — change before publishing.</p>
-    </div>
-    <div id="adminDash" style="display:none;">
-      <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;"><button class="admin-action" onclick="logoutAdmin()">Log out</button></div>
-      <div class="admin-stats">
-        <div class="admin-stat"><div class="admin-stat-val" id="stat-total">0</div><div class="admin-stat-label">Total</div></div>
-        <div class="admin-stat"><div class="admin-stat-val" id="stat-confirmed">0</div><div class="admin-stat-label">Confirmed</div></div>
-        <div class="admin-stat"><div class="admin-stat-val" id="stat-pending">0</div><div class="admin-stat-label">Pending</div></div>
-        <div class="admin-stat"><div class="admin-stat-val" id="stat-completed">0</div><div class="admin-stat-label">Completed</div></div>
-        <div class="admin-stat"><div class="admin-stat-val" id="stat-cancelled">0</div><div class="admin-stat-label">Cancelled</div></div>
-        <div class="admin-stat"><div class="admin-stat-val" id="stat-revenue">RM 0</div><div class="admin-stat-label">Revenue</div></div>
-      </div>
-      <div class="admin-tabs">
-        <button class="admin-tab active" onclick="switchTab('bookings', this)">Bookings</button>
-        <button class="admin-tab" onclick="switchTab('customers', this)">Customers</button>
-        <button class="admin-tab" onclick="switchTab('gallery-mgr', this)">Gallery</button>
-      </div>
-      <!-- Bookings Tab -->
-      <div class="admin-panel active" id="tab-bookings">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;">
-          <button class="admin-action" onclick="addManualBooking()">➕ Add Booking</button>
-          <div style="display:flex;gap:0.5rem;align-items:center;">
-            <input type="text" placeholder="Search name or contact..." oninput="searchBookings(this.value)" id="bookingSearch" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem 1rem; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; width: 200px;">
-            <button class="admin-export-btn" onclick="exportBookingsCSV()">📥 CSV</button>
-          </div>
-        </div>
-        <div class="table-wrapper"><table class="admin-table" id="bookingsTable"><thead><tr><th>Customer</th><th>Service</th><th>Date & Time</th><th>Contact</th><th>Status</th><th>Final Price</th><th>Actions</th></tr></thead><tbody id="bookingsTbody"></tbody></table></div>
-        <div class="pagination" id="bookingsPagination"></div>
-      </div>
-      <!-- Customers Tab -->
-      <div class="admin-panel" id="tab-customers">
-        <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
-          <input type="text" placeholder="Search name or phone..." oninput="searchCustomers(this.value)" id="customerSearch" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem 1rem; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; width: 200px; margin-right: 0.5rem;">
-          <button class="admin-export-btn" onclick="exportCustomersCSV()">📥 CSV</button>
-        </div>
-        <div class="table-wrapper"><table class="admin-table"><thead><tr><th>Name</th><th>Phone</th><th>Visits</th><th>Last Service</th><th>Total Spent</th></tr></thead><tbody id="customersTbody"></tbody></table></div>
-        <div class="pagination" id="customersPagination"></div>
-      </div>
-      <!-- Gallery Manager Tab -->
-      <div class="admin-panel" id="tab-gallery-mgr">
-        <div class="gallery-upload-zone" id="uploadZone" onclick="document.getElementById('photoInput').click()" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="handleDrop(event)">
-          <input type="file" id="photoInput" accept="image/*" multiple onchange="handleFileSelect(this.files)">
-          <div class="upload-icon">📷</div><div class="upload-label">Drag & drop photos here or <span>browse files</span></div><div style="margin-top:0.6rem;font-size:0.8rem;color:rgba(255,255,255,0.4);">JPG, PNG, WEBP · Multiple files supported</div>
-        </div>
-        <div class="upload-meta" id="uploadMeta" style="display:none;">
-          <img id="uploadPreview" class="upload-preview" alt="Preview">
-          <input type="text" id="photoTitle" placeholder="Title e.g. Cherry Blossom Set">
-          <select id="photoTag">
-            <option value="3d-arts">3D Arts</option>
-            <option value="cat-eye">Cat eye</option>
-            <option value="french-tips">French tips</option>
-            <option value="gel">Gel</option>
-            <option value="ombre">Ombre</option>
-            <option value="others">Others</option>
-          </select>
-          <button class="admin-add-btn" onclick="savePhoto()">Upload</button>
-          <button class="admin-action" onclick="cancelUpload()" style="padding:0.7rem 1.2rem;">Cancel</button>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-          <div style="font-size:0.8rem;color:rgba(255,255,255,0.4);" id="galleryMgrCount"></div>
-          <button class="admin-action" onclick="clearAllPhotos()">Clear All</button>
-        </div>
-        <div class="gallery-mgr-grid" id="galleryMgrGrid"></div>
       </div>
     </div>
   </div>
@@ -670,150 +328,85 @@
 <footer>
   <p>© 2025 Nails by Rey · Vive Reytchel · 📍 Kajang (Homebased) · <a href="https://wa.me/60176445338">017-6445338</a> · <a href="#booking">Book a Session</a></p>
 </footer>
-
 <div class="toast" id="toast"></div>
 
 <script>
-// CONFIG
+// ── CONFIG ─────────────────────────────────────────────────
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypOt0N-RCiBowshVcdTUte-Dmn-_Iizbf5nt0ciKiozLT7e-gGFmG4iCXgNTGW4ils/exec';
-const API_KEY = 'AIzaSyCSof22kUg19D6wdd0PYXmUPkA71x-sFhU';
-const SPREADSHEET_ID = '1nbQzt6TzZ4fi0mt1_v4sAsOO9ZIFyMHiGWUz61NVz7s';
-const ADMIN_PASSWORD = 'nailsbyrey2025';
-const ADMIN_WA = '60176445338';
+const API_KEY         = 'AIzaSyCSof22kUg19D6wdd0PYXmUPkA71x-sFhU';
+const SPREADSHEET_ID  = '1nbQzt6TzZ4fi0mt1_v4sAsOO9ZIFyMHiGWUz61NVz7s';
+const IMGBB_API_KEY   = 'ee8cadb535db992cb5cd149c81eedf20';
+const ADMIN_WA        = '60176445338';
+
+// ── BOOKING HEADERS (must match Google Sheet column order exactly) ──
+const BOOKING_COLS = ['id','fname','lname','phone','service','date','time','notes','status','finalservice','finalprice'];
 
 let bookings = [];
-let discountsData = []; // no longer used, but kept to avoid errors in old code
-let currentBookingsPage = 1;
-let currentCustomersPage = 1;
-const pageSize = 10;
 
-// ═══════════════════════════════════════════
-//  READING (Google Sheets API)
-// ═══════════════════════════════════════════
+// ── READ FROM SHEET ────────────────────────────────────────
 async function loadFromSheet(sheetName) {
-  const range = `${sheetName}!A:Z`;
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?key=${API_KEY}`;
-  const res = await fetch(url);
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${sheetName}!A:Z?key=${API_KEY}`;
+  const res  = await fetch(url);
   const json = await res.json();
-  if (!json.values || json.values.length === 0) return [];
-  const rows = json.values;
-  const headers = rows.shift().map(h => String(h).toLowerCase());
-  return rows.map(row => headers.reduce((obj, h, i) => { obj[h] = row[i] || ''; return obj; }, {}));
+  if (!json.values || json.values.length < 2) return [];
+  const headers = json.values[0].map(h => String(h).toLowerCase().trim());
+  return json.values.slice(1).map(row =>
+    headers.reduce((obj, h, i) => { obj[h] = row[i] !== undefined ? String(row[i]) : ''; return obj; }, {})
+  );
 }
 
-// ═══════════════════════════════════════════
-//  WRITING (hidden form POST)
-// ═══════════════════════════════════════════
-function saveToSheet(sheetName, data) {
-  return new Promise((resolve) => {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = APPS_SCRIPT_URL;
-    form.target = 'hiddenFrame';
-    form.style.display = 'none';
-    const typeField = document.createElement('input');
-    typeField.type = 'hidden';
-    typeField.name = 'type';
-    typeField.value = sheetName === 'Bookings' ? 'bookings' : 'discounts';
-    form.appendChild(typeField);
-    const dataField = document.createElement('input');
-    dataField.type = 'hidden';
-    dataField.name = 'data';
-    dataField.value = JSON.stringify(data);
-    form.appendChild(dataField);
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-    setTimeout(resolve, 500);
-  });
+// ── WRITE TO SHEET (single JSON fetch POST) ────────────────
+async function postToSheet(payload) {
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (e) { console.warn('Sheet write failed:', e); }
 }
 
-async function saveAllData() {
-  try { await saveToSheet('Bookings', bookings); } catch (e) {
-    localStorage.setItem('nbr_bookings', JSON.stringify(bookings));
-  }
-}
-
-// ═══════════════════════════════════════════
-//  INIT DATA
-// ═══════════════════════════════════════════
+// ── INIT: load bookings from sheet ────────────────────────
 async function initData() {
   try {
-    bookings = await loadFromSheet('Bookings');
+    const raw = await loadFromSheet('Bookings');
+    bookings = raw.map(b => ({
+      id:           b.id           || '',
+      fname:        b.fname        || '',
+      lname:        b.lname        || '',
+      phone:        b.phone        || '',
+      service:      b.service      || '',
+      date:         b.date         || '',
+      time:         b.time         || '',
+      notes:        b.notes        || '',
+      status:       b.status       || 'pending',
+      finalservice: b.finalservice || b.finalService || '',
+      finalprice:   b.finalprice   || b.finalPrice   || ''
+    }));
   } catch (e) {
-    bookings = JSON.parse(localStorage.getItem('nbr_bookings') || '[]');
-  }
-  if (bookings.length === 0) {
-    bookings = [
-      { id:1, fname:'Aisha', lname:'Karim', phone:'+60176445338', service:'Manicure + Gel', date:'2025-06-12', time:'2:00 PM', notes:'Light pink please', status:'confirmed', code:'', finalService:'', finalPrice:null },
-      { id:2, fname:'Nura', lname:'Halim', phone:'+601123456789', service:'Manicure', date:'2025-06-13', time:'11:00 AM', notes:'', status:'pending', code:'', finalService:'', finalPrice:null },
-      { id:3, fname:'Siti', lname:'Rahman', phone:'+601098765432', service:'Nail Art / Cat Eye', date:'2025-06-14', time:'3:00 PM', notes:'Cat eye, dark burgundy', status:'confirmed', code:'', finalService:'', finalPrice:null }
-    ];
-    await saveAllData();
+    console.warn('Could not load from sheet:', e);
+    bookings = [];
   }
 }
 
-// ═══════════════════════════════════════════
-//  GALLERY (updated tags)
-// ═══════════════════════════════════════════
+// ── GALLERY ────────────────────────────────────────────────
 const PLACEHOLDER_ITEMS = [
-  { id:'p1', tag:'3d-arts', label:'3D Floral', emoji:'🌸', bg:'#faeaea', isPlaceholder:true },
-  { id:'p2', tag:'cat-eye', label:'Cat Eye Shine', emoji:'✨', bg:'#e6f2ff', isPlaceholder:true },
+  { id:'p1', tag:'3d-arts',     label:'3D Floral',     emoji:'🌸', bg:'#faeaea', isPlaceholder:true },
+  { id:'p2', tag:'cat-eye',     label:'Cat Eye Shine', emoji:'✨', bg:'#e6f2ff', isPlaceholder:true },
   { id:'p3', tag:'french-tips', label:'Modern French', emoji:'🤍', bg:'#f5f5f5', isPlaceholder:true },
-  { id:'p4', tag:'gel', label:'Coral Gel', emoji:'🧡', bg:'#fff0e6', isPlaceholder:true },
-  { id:'p5', tag:'ombre', label:'Rose Ombré', emoji:'🌅', bg:'#fce4ec', isPlaceholder:true },
-  { id:'p6', tag:'others', label:'Abstract Art', emoji:'🎨', bg:'#e8f4fd', isPlaceholder:true },
+  { id:'p4', tag:'gel',         label:'Coral Gel',     emoji:'🧡', bg:'#fff0e6', isPlaceholder:true },
+  { id:'p5', tag:'ombre',       label:'Rose Ombré',    emoji:'🌅', bg:'#fce4ec', isPlaceholder:true },
+  { id:'p6', tag:'others',      label:'Abstract Art',  emoji:'🎨', bg:'#e8f4fd', isPlaceholder:true },
 ];
-
-// ═══════════════════════════════════════════
-//  GALLERY — ImgBB Cloud Upload (Fix 8)
-// ═══════════════════════════════════════════
-const IMGBB_API_KEY = 'ee8cadb535db992cb5cd149c81eedf20'; // ← replace this after setup
-const GALLERY_SHEET = 'Gallery'; // sheet tab name in your Google Sheet
-
-function loadGalleryPhotos() {
-  try { return JSON.parse(localStorage.getItem('nbr_gallery') || '[]'); } catch { return []; }
-}
-function saveGalleryPhotosLocal(photos) {
-  try { localStorage.setItem('nbr_gallery', JSON.stringify(photos)); } catch(e) {}
-}
-
-async function uploadToImgBB(base64data) {
-  if (IMGBB_API_KEY === 'YOUR_IMGBB_API_KEY') {
-    // fallback to localStorage if key not set yet
-    return null;
-  }
-  const formData = new FormData();
-  // strip data:image/...;base64, prefix
-  formData.append('image', base64data.split(',')[1]);
-  const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
-    method: 'POST', body: formData
-  });
-  const json = await res.json();
-  if (json.success) return json.data.url;
-  throw new Error(json.error?.message || 'ImgBB upload failed');
-}
-
-async function savePhotoToSheet(label, tag, imageUrl) {
-  const photoRecord = { label, tag, url: imageUrl, id: 'u' + Date.now() };
-  await fetch(APPS_SCRIPT_URL, {
-    method: 'POST', mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'addGallery', data: photoRecord })
-  }).catch(() => {});
-  return photoRecord;
-}
 
 async function loadGalleryFromSheet() {
   try {
-    const range = `${GALLERY_SHEET}!A:D`;
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${range}?key=${API_KEY}`;
-    const res = await fetch(url);
+    const url  = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/Gallery!A:D?key=${API_KEY}`;
+    const res  = await fetch(url);
     const json = await res.json();
     if (!json.values || json.values.length < 2) return [];
-    const [headers, ...rows] = json.values;
-    const h = headers.map(x => x.toLowerCase());
-    return rows.map(row => h.reduce((o, k, i) => { o[k] = row[i] || ''; return o; }, {}));
+    const h = json.values[0].map(x => x.toLowerCase());
+    return json.values.slice(1).map(row => h.reduce((o,k,i) => { o[k]=row[i]||''; return o; }, {}));
   } catch { return []; }
 }
 
@@ -822,29 +415,14 @@ async function renderGallery(tag = currentGalleryTag) {
   currentGalleryTag = tag;
   const grid = document.getElementById('galleryGrid');
   grid.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted);font-size:0.88rem;">Loading gallery...</div>';
-
-  let uploaded = [];
-  if (IMGBB_API_KEY !== 'YOUR_IMGBB_API_KEY') {
-    uploaded = await loadGalleryFromSheet();
-  } else {
-    uploaded = loadGalleryPhotos(); // localStorage fallback
-  }
-
-  const combined = [...uploaded, ...PLACEHOLDER_ITEMS];
-  const items = combined.filter(i => i.tag === tag);
+  const uploaded = await loadGalleryFromSheet();
+  const items = [...uploaded, ...PLACEHOLDER_ITEMS].filter(i => i.tag === tag);
   grid.innerHTML = items.length === 0
-    ? '<div style="text-align:center;padding:2rem;color:var(--muted);font-size:0.88rem;">No photos in this category yet.</div>'
-    : items.map(i => i.isPlaceholder ? `
-      <div class="gallery-item" style="background:${i.bg}">
-        <div class="gallery-item-inner"><div class="gallery-nail-art">${i.emoji}</div><div class="gallery-tag">${i.tag}</div></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-title">${i.label}</div><div class="gallery-overlay-tag">${i.tag}</div></div>
-      </div>
-    ` : `
-      <div class="gallery-item">
-        <img src="${i.url || i.dataUrl}" alt="${i.label}" style="width:100%;height:100%;object-fit:cover;">
-        <div class="gallery-overlay"><div class="gallery-overlay-title">${i.label}</div><div class="gallery-overlay-tag">${i.tag}</div></div>
-      </div>
-    `).join('');
+    ? '<div style="text-align:center;padding:2rem;color:var(--muted);">No photos in this category yet.</div>'
+    : items.map(i => i.isPlaceholder
+        ? `<div class="gallery-item" style="background:${i.bg}"><div class="gallery-item-inner"><div class="gallery-nail-art">${i.emoji}</div><div class="gallery-tag">${i.tag}</div></div><div class="gallery-overlay"><div class="gallery-overlay-title">${i.label}</div><div class="gallery-overlay-tag">${i.tag}</div></div></div>`
+        : `<div class="gallery-item"><img src="${i.url}" alt="${i.label}" style="width:100%;height:100%;object-fit:cover;"><div class="gallery-overlay"><div class="gallery-overlay-title">${i.label}</div><div class="gallery-overlay-tag">${i.tag}</div></div></div>`
+      ).join('');
 }
 
 document.getElementById('galleryTabs').addEventListener('click', e => {
@@ -855,616 +433,143 @@ document.getElementById('galleryTabs').addEventListener('click', e => {
   renderGallery(tab.dataset.tag);
 });
 
-let pendingFiles = [], pendingIndex = 0;
-function handleFileSelect(files) { if (files.length) { pendingFiles = Array.from(files); pendingIndex = 0; loadNextPending(); } }
-function handleDrop(e) { e.preventDefault(); document.getElementById('uploadZone').classList.remove('dragover'); handleFileSelect(e.dataTransfer.files); }
-function loadNextPending() {
-  if (pendingIndex >= pendingFiles.length) return;
-  const file = pendingFiles[pendingIndex];
-  const reader = new FileReader();
-  reader.onload = e => {
-    const preview = document.getElementById('uploadPreview');
-    preview.src = e.target.result;
-    preview.style.display = 'block';
-    document.getElementById('uploadMeta').style.display = 'flex';
-    document.getElementById('photoTitle').value = file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
-    document.getElementById('uploadZone').style.display = 'none';
-    preview._dataUrl = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-async function savePhoto() {
-  const title = document.getElementById('photoTitle').value.trim() || 'Untitled';
-  const tag = document.getElementById('photoTag').value;
-  const dataUrl = document.getElementById('uploadPreview')._dataUrl;
-  if (!dataUrl) return;
-
-  const btn = document.querySelector('#uploadMeta .admin-add-btn');
-  btn.textContent = 'Uploading...';
-  btn.disabled = true;
-
-  try {
-    let imageUrl = null;
-
-    if (IMGBB_API_KEY !== 'YOUR_IMGBB_API_KEY') {
-      // Upload to ImgBB cloud
-      imageUrl = await uploadToImgBB(dataUrl);
-      await savePhotoToSheet(title, tag, imageUrl);
-      showToast('Photo uploaded to cloud ✦');
-    } else {
-      // Fallback: save locally
-      const photos = loadGalleryPhotos();
-      photos.unshift({ id: 'u' + Date.now(), label: title, tag, dataUrl, url: dataUrl });
-      saveGalleryPhotosLocal(photos);
-      showToast('Saved locally (set ImgBB key for cloud sync) ✦');
-    }
-
-    pendingIndex++;
-    if (pendingIndex < pendingFiles.length) {
-      loadNextPending();
-    } else {
-      cancelUpload();
-    }
-    await renderGallery();
-    await renderGalleryManager();
-    updateAdminStats();
-
-  } catch(err) {
-    showToast('Upload failed: ' + err.message);
-  } finally {
-    btn.textContent = 'Upload';
-    btn.disabled = false;
-  }
-}
-function cancelUpload() {
-  pendingFiles = []; pendingIndex = 0;
-  document.getElementById('uploadMeta').style.display = 'none';
-  document.getElementById('uploadZone').style.display = 'block';
-  document.getElementById('uploadPreview').style.display = 'none';
-  document.getElementById('photoTitle').value = '';
-  document.getElementById('photoInput').value = '';
-}
-function deletePhoto(id) {
-  // Remove from localStorage
-  saveGalleryPhotosLocal(loadGalleryPhotos().filter(p => p.id !== id));
-  // Also notify Apps Script to remove from sheet
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST', mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'deleteGallery', id })
-  }).catch(() => {});
-  renderGallery(); renderGalleryManager(); updateAdminStats();
-  showToast('Photo removed');
-}
-function clearAllPhotos() {
-  if (!confirm('Remove all uploaded photos? This cannot be undone.')) return;
-  saveGalleryPhotosLocal([]);
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST', mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'clearGallery' })
-  }).catch(() => {});
-  renderGallery(); renderGalleryManager(); updateAdminStats();
-  showToast('Gallery cleared');
-}
-
-async function renderGalleryManager() {
-  const grid = document.getElementById('galleryMgrGrid');
-  const countEl = document.getElementById('galleryMgrCount');
-  if (!grid) return;
-
-  grid.innerHTML = '<div class="gallery-mgr-empty">Loading...</div>';
-
-  let photos = [];
-  if (IMGBB_API_KEY !== 'YOUR_IMGBB_API_KEY') {
-    photos = await loadGalleryFromSheet();
-  } else {
-    photos = loadGalleryPhotos();
-  }
-
-  countEl.textContent = `${photos.length} uploaded photo${photos.length !== 1 ? 's' : ''}`;
-  document.getElementById('stat-photos') && (document.getElementById('stat-photos').textContent = photos.length);
-
-  if (!photos.length) {
-    grid.innerHTML = '<div class="gallery-mgr-empty">No photos uploaded yet. Use the upload zone above.</div>';
-    return;
-  }
-  grid.innerHTML = photos.map(p => `
-    <div class="gallery-mgr-item">
-      <img src="${p.url || p.dataUrl}" alt="${p.label}">
-      <div class="gallery-mgr-info">
-        <div class="gallery-mgr-name">${p.label}</div>
-        <div class="gallery-mgr-tag">${p.tag}</div>
-      </div>
-      <button class="gallery-mgr-del" onclick="deletePhoto('${p.id}')">✕</button>
-    </div>
-  `).join('');
-}
-
-// ═══════════════════════════════════════════
-//  MULTI-SELECT DROPDOWN (Fix 2)
-// ═══════════════════════════════════════════
-function toggleServiceDrop() {
-  document.getElementById('serviceOptions').classList.toggle('open');
-}
-document.addEventListener('click', e => {
-  if (!e.target.closest('#serviceDropWrap')) {
-    document.getElementById('serviceOptions')?.classList.remove('open');
-  }
-});
+// ── MULTI-SELECT SERVICE DROPDOWN ─────────────────────────
+function toggleServiceDrop() { document.getElementById('serviceOptions').classList.toggle('open'); }
+document.addEventListener('click', e => { if (!e.target.closest('#serviceDropWrap')) document.getElementById('serviceOptions')?.classList.remove('open'); });
+document.addEventListener('change', e => { if (e.target.closest('#serviceOptions')) updateServiceDisplay(); });
 function updateServiceDisplay() {
   const checked = Array.from(document.querySelectorAll('#serviceOptions input:checked')).map(c => c.value);
-  const display = document.getElementById('serviceDisplayText');
-  display.textContent = checked.length ? checked.join(', ') : 'Select service(s)...';
-  display.style.color = checked.length ? 'var(--ink)' : 'var(--muted)';
+  const el = document.getElementById('serviceDisplayText');
+  el.textContent = checked.length ? checked.join(', ') : 'Select service(s)...';
+  el.style.color  = checked.length ? 'var(--ink)' : 'var(--muted)';
 }
-document.addEventListener('change', e => {
-  if (e.target.closest('#serviceOptions')) updateServiceDisplay();
-});
+function getSelectedServices() {
+  return Array.from(document.querySelectorAll('#serviceOptions input:checked')).map(c => c.value);
+}
 
-// ═══════════════════════════════════════════
-//  TIME OPTIONS WITH SLOT BLOCKING (Fix 3)
-// ═══════════════════════════════════════════
+// ── TIME SLOTS WITH 2-HR BUFFER ───────────────────────────
 function timeToMinutes(t) {
   if (!t) return -1;
-  // Handle both "2:00 PM" and "14:00" formats
-  t = t.trim();
-  if (t.includes(':') && !t.includes('AM') && !t.includes('PM')) {
-    // 24hr format like "14:00" or "15:00"
-    const [h, m] = t.split(':').map(Number);
-    return h * 60 + m;
-  }
+  t = String(t).trim();
+  if (/^\d{1,2}:\d{2}$/.test(t)) { const [h,m]=t.split(':').map(Number); return h*60+m; }
   const [time, ampm] = t.split(' ');
   let [h, m] = time.split(':').map(Number);
-  if (ampm === 'PM' && h !== 12) h += 12;
-  if (ampm === 'AM' && h === 12) h = 0;
-  return h * 60 + m;
+  if (ampm==='PM' && h!==12) h+=12;
+  if (ampm==='AM' && h===12) h=0;
+  return h*60+m;
 }
 
 function updateTimeOptions() {
-  const dateInput = document.getElementById('bdate');
+  const dateVal  = document.getElementById('bdate').value;
   const timeSelect = document.getElementById('btime');
-  if (!dateInput.value) { timeSelect.innerHTML = '<option value="">Select date first</option>'; return; }
+  if (!dateVal) { timeSelect.innerHTML='<option value="">Select date first</option>'; return; }
 
-  const selectedDate = dateInput.value;
-  const day = new Date(selectedDate + 'T00:00:00').getDay();
-  const nowDate = new Date();
-  const isToday = selectedDate === nowDate.toISOString().split('T')[0];
-  const nowMins = isToday ? nowDate.getHours() * 60 + nowDate.getMinutes() : -1;
+  const day    = new Date(dateVal+'T00:00:00').getDay();
+  const now    = new Date();
+  const isToday = dateVal === now.toISOString().split('T')[0];
+  const nowMins = isToday ? now.getHours()*60+now.getMinutes() : -1;
 
-  // Build time slots
-  let slots = [];
-  if (day >= 1 && day <= 5) {
-    slots = ['8:00 PM', '8:30 PM', '9:00 PM'];
-  } else {
-    for (let h = 11; h <= 18; h++) {
-      for (let m = 0; m <= 30; m += 30) {
-        if (h === 18 && m === 30) break;
-        const hour = h > 12 ? h - 12 : h;
-        const ampm = h >= 12 ? 'PM' : 'AM';
-        slots.push(`${hour}:${String(m).padStart(2,'0')} ${ampm}`);
-      }
-    }
-  }
+  const slots = day>=1 && day<=5
+    ? ['8:00 PM','8:30 PM','9:00 PM']
+    : (() => { const s=[]; for(let h=11;h<=18;h++) for(let m=0;m<=30;m+=30) { if(h===18&&m===30) break; const hr=h>12?h-12:h; s.push(`${hr}:${String(m).padStart(2,'0')} ${h>=12?'PM':'AM'}`); } return s; })();
 
-  // Find blocked minutes — active bookings (pending/confirmed) on this date
-  const activeOnDate = bookings.filter(b =>
-    b.date === selectedDate && (b.status === 'pending' || b.status === 'confirmed')
-  );
-  const blockedRanges = activeOnDate.map(b => {
-    const start = timeToMinutes(b.time);
-    return { start: start - 120, end: start + 120 }; // ±2hr buffer
-  });
+  const blocked = bookings
+    .filter(b => b.date===dateVal && (b.status==='pending'||b.status==='confirmed'))
+    .map(b => { const c=timeToMinutes(b.time); return {start:c-120,end:c+120}; });
 
   timeSelect.innerHTML = '';
-  let hasAvailable = false;
+  let hasAvail = false;
   slots.forEach(slot => {
-    const slotMins = timeToMinutes(slot);
-    const isPast = isToday && slotMins <= nowMins + 30; // block current + 30min buffer for today
-    const isBlocked = blockedRanges.some(r => slotMins > r.start && slotMins < r.end);
-    const opt = document.createElement('option');
-    opt.value = slot;
-    if (isPast || isBlocked) {
-      opt.textContent = slot + (isBlocked ? ' — Unavailable' : ' — Past');
-      opt.disabled = true;
-      opt.style.color = '#aaa';
-    } else {
-      opt.textContent = slot;
-      hasAvailable = true;
-    }
+    const mins = timeToMinutes(slot);
+    const past = isToday && mins <= nowMins+30;
+    const busy = blocked.some(r => mins>r.start && mins<r.end);
+    const opt  = document.createElement('option');
+    opt.value  = slot;
+    if (past||busy) { opt.textContent=slot+(busy?' — Unavailable':' — Past'); opt.disabled=true; opt.style.color='#aaa'; }
+    else            { opt.textContent=slot; hasAvail=true; }
     timeSelect.appendChild(opt);
   });
-
-  if (!hasAvailable) {
-    timeSelect.innerHTML = '<option value="" disabled selected>No slots available this day</option>';
-  } else {
-    // Auto-select first available
-    const firstAvail = Array.from(timeSelect.options).find(o => !o.disabled);
-    if (firstAvail) firstAvail.selected = true;
-  }
+  if (!hasAvail) { timeSelect.innerHTML='<option value="" disabled selected>No slots available this day</option>'; }
+  else { const f=Array.from(timeSelect.options).find(o=>!o.disabled); if(f) f.selected=true; }
 }
 
-// ═══════════════════════════════════════════
-//  BOOKING SUBMISSION
-// ═══════════════════════════════════════════
-function getFullPhone() {
-  const digits = document.getElementById('phone').value.replace(/\D/g, '');
-  return '+60' + digits;
-}
+// ── BOOKING SUBMIT ─────────────────────────────────────────
+function getFullPhone() { return '+60'+document.getElementById('phone').value.replace(/\D/g,''); }
 
-function resetBookingForm() {
-  document.getElementById('bookingForm').style.display = 'block';
-  document.getElementById('bookingSuccess').style.display = 'none';
-  document.getElementById('fname').value = '';
-  document.getElementById('lname').value = '';
-  document.getElementById('phone').value = '';
-  document.getElementById('bdate').value = '';
-  document.getElementById('btime').innerHTML = '<option value="">Select date first</option>';
-  document.getElementById('notes').value = '';
-  document.querySelectorAll('#serviceOptions input').forEach(cb => cb.checked = false);
-  updateServiceDisplay();
-}
-
-function submitBooking() {
+async function submitBooking() {
   const fname = document.getElementById('fname').value.trim();
-  const rawPhone = document.getElementById('phone').value.trim();
-  if (!fname || !rawPhone) { showToast('Please fill in all required fields ✦'); return; }
-  const phone = getFullPhone();
-  const selectedServices = Array.from(document.querySelectorAll('#serviceOptions input:checked')).map(cb => cb.value);
-  if (selectedServices.length === 0) { showToast('Please select at least one service ✦'); return; }
-  const service = selectedServices.join(', ');
+  const phone = document.getElementById('phone').value.trim();
+  if (!fname || !phone) { showToast('Please fill in name and phone ✦'); return; }
+  const services = getSelectedServices();
+  if (!services.length) { showToast('Please select at least one service ✦'); return; }
   const bdate = document.getElementById('bdate').value;
   const btime = document.getElementById('btime').value;
   if (!bdate || !btime) { showToast('Please select date and time ✦'); return; }
 
-  const newBooking = {
-    id: bookings.length + 1,
+  const booking = {
+    id:           'BK' + Date.now(),
     fname,
-    lname: document.getElementById('lname').value.trim(),
-    phone,
-    service,
-    date: bdate,
-    time: btime,
-    notes: document.getElementById('notes').value.trim(),
-    status: 'pending',
-    code: '',
-    finalService: '',
-    finalPrice: null
+    lname:        document.getElementById('lname').value.trim(),
+    phone:        getFullPhone(),
+    service:      services.join(', '),
+    date:         bdate,
+    time:         btime,
+    notes:        document.getElementById('notes').value.trim(),
+    status:       'pending',
+    finalservice: '',
+    finalprice:   ''
   };
 
-  bookings.push(newBooking);
-  saveAllData();
+  // Write to Google Sheet immediately
+  await postToSheet({ type: 'addBooking', data: booking });
+  bookings.push(booking); // optimistic local update for time slot blocking
+
   document.getElementById('bookingForm').style.display = 'none';
   document.getElementById('bookingSuccess').style.display = 'block';
-  document.getElementById('successMsg').textContent = `Hi ${fname}! Rey will confirm your ${service} on ${bdate} at ${btime} shortly via WhatsApp. 💅`;
-  updateAllViews();
+  document.getElementById('successMsg').textContent = `Hi ${fname}! Rey will confirm your ${booking.service} on ${bdate} at ${btime} shortly via WhatsApp. 💅`;
 
-  const adminMsg = encodeURIComponent(`New Booking for Nails by Rey\n\n${fname} ${newBooking.lname}\n${service}\n${bdate} at ${btime}\nPhone: ${phone}\nNotes: ${newBooking.notes || ''}`);
+  // Notify Rey on WhatsApp
+  const adminMsg = encodeURIComponent(`New Booking!\n\n${fname} ${booking.lname}\n${booking.service}\n${bdate} at ${btime}\nPhone: ${booking.phone}\nNotes: ${booking.notes||'—'}`);
   window.open(`https://wa.me/${ADMIN_WA}?text=${adminMsg}`, '_blank');
 }
 
-// ═══════════════════════════════════════════
-//  ADMIN FUNCTIONS
-// ═══════════════════════════════════════════
-function addManualBooking() {
-  const name = prompt('Full name:'); if (!name) return;
-  const service = prompt('Service:'); if (!service) return;
-  const date = prompt('Date (YYYY-MM-DD):'); if (!date) return;
-  const time = prompt('Time (e.g. 2:00 PM):'); if (!time) return;
-  const status = prompt('Status (confirmed/pending/completed/cancelled):', 'confirmed');
-  if (!['confirmed','pending','completed','cancelled'].includes(status)) return showToast('Invalid status');
-  let finalPrice = null;
-  if (status === 'completed') {
-    const price = prompt('Final price (RM):');
-    finalPrice = parseFloat(price);
-    if (isNaN(finalPrice)) return showToast('Invalid price');
-  }
-  const phone = prompt('Phone number (with +60):', '+60') || '+6000000000';
-  bookings.push({ id: bookings.length + 1, fname: name, lname: '', phone, service, date, time, notes: '', status, code: '', finalService: service, finalPrice });
-  saveAllData();
-  updateAllViews();
-  showToast('Manual booking added ✦');
+function resetBookingForm() {
+  document.getElementById('bookingForm').style.display   = 'block';
+  document.getElementById('bookingSuccess').style.display = 'none';
+  ['fname','lname','phone','notes'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('bdate').value = '';
+  document.getElementById('btime').innerHTML = '<option value="">Select date first</option>';
+  document.querySelectorAll('#serviceOptions input').forEach(cb => cb.checked=false);
+  updateServiceDisplay();
 }
 
-function updateAdminStats() {
-  document.getElementById('stat-total').textContent = bookings.length;
-  document.getElementById('stat-confirmed').textContent = bookings.filter(b => b.status === 'confirmed').length;
-  document.getElementById('stat-pending').textContent = bookings.filter(b => b.status === 'pending').length;
-  document.getElementById('stat-completed').textContent = bookings.filter(b => b.status === 'completed').length;
-  document.getElementById('stat-cancelled').textContent = bookings.filter(b => b.status === 'cancelled').length;
-  const rev = bookings.filter(b => b.status === 'completed' && b.finalPrice).reduce((sum, b) => sum + b.finalPrice, 0);
-  document.getElementById('stat-revenue').textContent = 'RM ' + rev.toFixed(0);
-}
-
-function renderBookingsTable(filter = '', page = 1) {
-  currentBookingsPage = page;
-  let list = filter ? bookings.filter(b => 
-    `${b.fname} ${b.lname} ${b.phone}`.toLowerCase().includes(filter.toLowerCase())
-  ) : bookings;
-  const totalPages = Math.ceil(list.length / pageSize) || 1;
-  const start = (page - 1) * pageSize;
-  const paged = list.slice(start, start + pageSize);
-
-  document.getElementById('bookingsTbody').innerHTML = paged.map(b => `
-    <tr>
-      <td>${b.fname} ${b.lname}</td>
-      <td>${b.service}</td>
-      <td>${b.date} · ${b.time}</td>
-      <td>${b.phone}</td>
-      <td><span class="status-badge status-${b.status}">${b.status}</span></td>
-      <td>${b.finalPrice ? 'RM ' + b.finalPrice : '—'}</td>
-      <td>
-        <button class="admin-action" onclick="editBooking('${b.id}')">Edit</button>
-        <button class="admin-action" onclick="deleteBooking('${b.id}')">Delete</button>
-        ${b.status === 'pending' ? `<button class="admin-action" onclick="updateStatus('${b.id}','confirmed')">Confirm</button>` : ''}
-        ${b.status === 'confirmed' ? `<button class="admin-action" onclick="updateStatus('${b.id}','completed')">Complete</button>` : ''}
-        ${(b.status === 'pending' || b.status === 'confirmed') ? `<button class="admin-action" onclick="updateStatus('${b.id}','cancelled')">Cancel</button>` : ''}
-        ${b.status === 'confirmed' ? `<button class="admin-action" onclick="notifyWA('${b.id}')">Notify</button>` : ''}
-      </td>
-    </tr>
-  `).join('');
-
-  // Pagination
-  const pagDiv = document.getElementById('bookingsPagination');
-  pagDiv.innerHTML = '';
-  for (let i = 1; i <= totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.textContent = i;
-    btn.className = i === page ? 'active' : '';
-    btn.onclick = () => renderBookingsTable(filter, i);
-    pagDiv.appendChild(btn);
-  }
-}
-
-function renderCustomersTable(filter = '', page = 1) {
-  currentCustomersPage = page;
-  const map = {};
-  bookings.forEach(b => {
-    if (b.status !== 'completed') return;
-    // Fix 7: composite key = phone + full name to avoid merging different people with same number
-    const key = `${b.phone}__${(b.fname||'').toLowerCase().trim()}__${(b.lname||'').toLowerCase().trim()}`;
-    if (!map[key]) {
-      map[key] = { name: `${b.fname} ${b.lname}`.trim(), phone: b.phone, visits: 0, last: '', spent: 0 };
-    }
-    map[key].visits++;
-    if (!map[key].last || b.date > map[key].last) map[key].last = b.service;
-    if (b.finalPrice) map[key].spent += parseFloat(b.finalPrice) || 0;
-  });
-  let customers = Object.values(map);
-  if (filter) {
-    customers = customers.filter(c => 
-      c.name.toLowerCase().includes(filter.toLowerCase()) || c.phone.includes(filter)
-    );
-  }
-  const totalPages = Math.ceil(customers.length / pageSize) || 1;
-  const start = (page - 1) * pageSize;
-  const paged = customers.slice(start, start + pageSize);
-
-  document.getElementById('customersTbody').innerHTML = paged.map(c => `
-    <tr>
-      <td>${c.name}</td>
-      <td>${c.phone}</td>
-      <td>${c.visits}</td>
-      <td>${c.last}</td>
-      <td>RM ${c.spent.toFixed(0)}</td>
-    </tr>
-  `).join('');
-
-  const pagDiv = document.getElementById('customersPagination');
-  pagDiv.innerHTML = '';
-  for (let i = 1; i <= totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.textContent = i;
-    btn.className = i === page ? 'active' : '';
-    btn.onclick = () => renderCustomersTable(filter, i);
-    pagDiv.appendChild(btn);
-  }
-}
-
-function updateStatus(id, newStatus) {
-  const b = bookings.find(b => String(b.id) === String(id));
-  if (!b) return showToast('Booking not found');
-  let finalPrice = b.finalPrice || null;
-  if (newStatus === 'completed') {
-    const price = prompt('Enter final price (RM):', b.finalPrice || '');
-    if (price === null) return;
-    finalPrice = parseFloat(price);
-    if (isNaN(finalPrice)) return showToast('Invalid price');
-  }
-  b.status = newStatus;
-  if (finalPrice !== null) b.finalPrice = finalPrice;
-  // Push update to Apps Script
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'updateStatus', id: String(id), status: newStatus, finalPrice: finalPrice || '' })
-  }).catch(() => {}); // no-cors so response is opaque, errors silently
-  saveAllData();
-  updateAllViews();
-  showToast(`Booking marked as ${newStatus} ✦`);
-}
-
-function editBooking(id) {
-  const b = bookings.find(b => String(b.id) === String(id));
-  if (!b) return;
-  const newName = prompt('Full name:', `${b.fname} ${b.lname}`) || `${b.fname} ${b.lname}`;
-  const [fname, ...lname] = newName.split(' ');
-  b.fname = fname; b.lname = lname.join(' ') || '';
-  b.service = prompt('Service:', b.service) || b.service;
-  b.date = prompt('Date (YYYY-MM-DD):', b.date) || b.date;
-  b.time = prompt('Time:', b.time) || b.time;
-  b.phone = prompt('Phone:', b.phone) || b.phone;
-  b.status = prompt('Status (confirmed/pending/completed/cancelled):', b.status) || b.status;
-  if (b.status === 'completed') {
-    const price = parseFloat(prompt('Final price (RM):', b.finalPrice || ''));
-    if (!isNaN(price)) b.finalPrice = price;
-  }
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST', mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'updateBooking', data: b })
-  }).catch(() => {});
-  saveAllData(); updateAllViews(); showToast('Booking updated ✦');
-}
-
-function deleteBooking(id) {
-  if (!confirm('Delete this booking?')) return;
-  bookings = bookings.filter(b => String(b.id) !== String(id));
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST', mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ type: 'deleteBooking', id: String(id) })
-  }).catch(() => {});
-  saveAllData(); updateAllViews(); showToast('Booking deleted ✦');
-}
-
-function notifyWA(id) {
-  const b = bookings.find(b => String(b.id) === String(id));
-  if (!b) return;
-  const msg = encodeURIComponent(`Hi ${b.fname}! ✨ Your appointment with Nails by Rey is confirmed for ${b.date} at ${b.time}. Service: ${b.service}. See you soon! — Rey 💅`);
-  window.open(`https://wa.me/${b.phone.replace(/\D/g,'')}?text=${msg}`, '_blank');
-}
-
-function searchBookings(val) { renderBookingsTable(val, currentBookingsPage); }
-function searchCustomers(val) { renderCustomersTable(val, currentCustomersPage); }
-
-function exportBookingsCSV() {
-  const headers = ['ID','First','Last','Phone','Service','Date','Time','Notes','Status','Final Price'];
-  const rows = bookings.map(b => [b.id, b.fname, b.lname, b.phone, b.service, b.date, b.time, b.notes, b.status, b.finalPrice || '']);
-  downloadCSV([headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n'), 'bookings.csv');
-  showToast('Bookings CSV exported ✦');
-}
-
-function exportCustomersCSV() {
-  const map = {};
-  bookings.forEach(b => {
-    if (b.status !== 'completed') return;
-    const key = b.phone;
-    if (!map[key]) map[key] = { name: `${b.fname} ${b.lname}`, phone: b.phone, visits: 0, last: '', spent: 0 };
-    map[key].visits++;
-    if (!map[key].last || b.date > map[key].last) map[key].last = b.service;
-    if (b.finalPrice) map[key].spent += b.finalPrice;
-  });
-  const headers = ['Name','Phone','Visits','Last Service','Total Spent (RM)'];
-  const rows = Object.values(map).map(c => [c.name, c.phone, c.visits, c.last, c.spent.toFixed(0)]);
-  downloadCSV([headers, ...rows].map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n'), 'customers.csv');
-  showToast('Customers CSV exported ✦');
-}
-
-function downloadCSV(content, filename) {
-  const blob = new Blob(['\uFEFF' + content], { type: 'text/csv;charset=utf-8;' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = filename;
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-
-function updateAllViews() {
-  updateAdminStats();
-  renderBookingsTable('', currentBookingsPage);
-  renderCustomersTable('', currentCustomersPage);
-}
-
-// TABS, TOAST, LOGIN, HAMBURGER
-function switchTab(id, btn) {
-  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('tab-' + id).classList.add('active');
-}
-
+// ── TOAST ──────────────────────────────────────────────────
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-function checkAdminPw() {
-  if (document.getElementById('adminPwInput').value === ADMIN_PASSWORD) {
-    document.getElementById('adminGate').style.display = 'none';
-    document.getElementById('adminDash').style.display = 'block';
-    sessionStorage.setItem('nbrAdmin', '1');
-    updateAllViews();
-    renderGalleryManager();
-  } else {
-    document.getElementById('gateError').style.display = 'block';
-    document.getElementById('adminPwInput').value = '';
-  }
-}
-function logoutAdmin() {
-  sessionStorage.removeItem('nbrAdmin');
-  document.getElementById('adminGate').style.display = 'block';
-  document.getElementById('adminDash').style.display = 'none';
-  // Hide the admin section and nav link again
-  document.getElementById('admin').style.display = 'none';
-  document.getElementById('adminNavItem').style.display = 'none';
-  window.location.hash = '';
-}
-
-function revealAdminSection() {
-  document.getElementById('admin').style.display = '';
-  document.getElementById('adminNavItem').style.display = '';
-  setTimeout(() => {
-    document.getElementById('admin').scrollIntoView({ behavior: 'smooth' });
-  }, 100);
-}
-
-// SCROLL REVEAL & SCROLLSPY
+// ── SCROLL REVEAL & SCROLLSPY ──────────────────────────────
 (function() {
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-  revealEls.forEach(el => observer.observe(el));
-
-  const sections = document.querySelectorAll('section[id]');
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), { threshold:0.15, rootMargin:'0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   const links = document.querySelectorAll('.nav-links a:not(.nav-book)');
   window.addEventListener('scroll', () => {
-    let current = '';
     const y = window.pageYOffset;
-    sections.forEach(s => {
-      const top = s.offsetTop - 100;
-      if (y >= top && y < top + s.offsetHeight) current = s.getAttribute('id');
-    });
-    links.forEach(l => {
-      l.classList.remove('active');
-      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
-    });
-  }, { passive: true });
+    let cur = '';
+    document.querySelectorAll('section[id]').forEach(s => { if(y >= s.offsetTop-100) cur=s.id; });
+    links.forEach(l => { l.classList.remove('active'); if(l.getAttribute('href')==='#'+cur) l.classList.add('active'); });
+  }, { passive:true });
 })();
 
-// STARTUP
+// ── STARTUP ────────────────────────────────────────────────
 (async function() {
   await initData();
   renderGallery();
-  updateAllViews();
   document.getElementById('bdate').min = new Date().toISOString().split('T')[0];
-  document.getElementById('btime').innerHTML = '<option value="">Select date first</option>';
-
-  // Fix 5: Admin section only revealed via secret hash #admin-access or ?admin
-  // OR if session already authenticated
-  const isAdminRoute = window.location.hash === '#admin-access' || window.location.search.includes('admin');
-  const isSessionAdmin = sessionStorage.getItem('nbrAdmin');
-
-  if (isAdminRoute || isSessionAdmin) {
-    revealAdminSection();
-  }
-  if (isSessionAdmin) {
-    document.getElementById('adminGate').style.display = 'none';
-    document.getElementById('adminDash').style.display = 'block';
-    renderGalleryManager();
-  }
-
-  // Hamburger menu
-  document.getElementById('hamburgerBtn').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('show');
-  });
-  document.querySelectorAll('#navLinks a').forEach(link => {
-    link.addEventListener('click', () => document.getElementById('navLinks').classList.remove('show'));
-  });
+  document.getElementById('hamburgerBtn').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('show'));
+  document.querySelectorAll('#navLinks a').forEach(l => l.addEventListener('click', () => document.getElementById('navLinks').classList.remove('show')));
 })();
 </script>
 </body>
