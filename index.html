@@ -583,7 +583,7 @@ async function submitBooking() {
 
   // Auto-notify Rey via WhatsApp
   const msg = encodeURIComponent(
-    `New Booking Request for Nails by Rey!\n\nName: ${fname} ${booking.lname}\nPhone: ${booking.phone}\nService: ${booking.service}\nDate: ${bdate} at ${btime}\nNotes: ${booking.notes||'—'}`
+    `Hi Nails by Rey!\n\nNew Appointment Request by\n\nName: ${fname} ${booking.lname}\nPhone: ${booking.phone}\nService: ${booking.service}\nDate: ${bdate} at ${btime}\nNotes: ${booking.notes||'—'}`
   );
   window.open(`https://wa.me/${ADMIN_WA}?text=${msg}`, '_blank');
 }
