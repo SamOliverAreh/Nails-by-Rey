@@ -447,7 +447,7 @@ function notifyWA(id) {
   const b = bookings.find(b=>b.id===id);
   if (!b) return;
   const msg=encodeURIComponent(
-    `Hi ${b.fname}! ✨ Your appointment with Nails by Rey is confirmed for ${b.date} at ${b.time}.\nService: ${b.service}.\nSee you soon! — Rey 💅`
+    `Hi ${b.fname}!\n\nYour appointment with Nails by Rey is confirmed for ${b.date} at ${b.time}.\nService: ${b.service}.\n\nSee you soon! — Rey`
   );
   window.open(`https://wa.me/${b.phone.replace(/\D/g,'')}?text=${msg}`, '_blank');
 }
