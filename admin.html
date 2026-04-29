@@ -277,12 +277,12 @@
           <button class="add-btn" onclick="addManualBooking()">➕ Add Booking</button>
         </div>
         <div class="toolbar-right" style="gap:0.5rem;flex-wrap:wrap;">
-          <select id="statusFilter" onchange="renderBookings(1)" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.5rem 0.9rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.82rem;outline:none;cursor:pointer;">
-            <option value="">All Statuses</option>
-            <option value="pending">Pending</option>
-            <option value="confirmed">Confirmed</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
+          <select id="statusFilter" onchange="renderBookings(1)" style="background:#2a1010;border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:0.5rem 0.9rem;color:rgba(255,255,255,0.85);font-family:'DM Sans',sans-serif;font-size:0.82rem;outline:none;cursor:pointer;">
+            <option value=""    style="background:#2a1010;color:white;">All Statuses</option>
+            <option value="cancelled"  style="background:#2a1010;color:white;">Cancelled</option>
+            <option value="completed"  style="background:#2a1010;color:white;">Completed</option>
+            <option value="confirmed"  style="background:#2a1010;color:white;">Confirmed</option>
+            <option value="pending"    style="background:#2a1010;color:white;">Pending</option>
           </select>
           <input class="tbl-input" id="bookingSearch" placeholder="Search name, phone or service..." oninput="renderBookings(1)" style="width:220px;">
         </div>
@@ -702,14 +702,17 @@ function buildCustomerMap() {
   sorted.forEach(b=>{
     if(b.status!=='completed') return;
     const phone=(b.phone||'').replace(/\D/g,'');
-    if(!phone) return;
-    if(!map[phone]) map[phone]={name:`${b.fname} ${b.lname}`.trim(),phone:b.phone,visits:0,lastService:'',spent:0,allServices:[]};
-    map[phone].name=`${b.fname} ${b.lname}`.trim();
-    map[phone].lastService=b.finalservice||b.service;
-    map[phone].visits++;
-    map[phone].spent+=parseFloat(b.finalprice)||0;
+    // Fix 2: if no phone, use name as fallback key so no-phone customers still appear
+    const key = phone ? phone : `noPhone__${(b.fname||'').toLowerCase().trim()}__${(b.lname||'').toLowerCase().trim()}`;
+    if(!key || key === 'noPhone____') return; // skip if truly no identity at all
+    if(!map[key]) map[key]={name:`${b.fname} ${b.lname}`.trim(),phone:b.phone||'—',visits:0,lastService:'',spent:0,allServices:[]};
+    map[key].name=`${b.fname} ${b.lname}`.trim();
+    map[key].phone=b.phone||'—';
+    map[key].lastService=b.finalservice||b.service;
+    map[key].visits++;
+    map[key].spent+=parseFloat(b.finalprice)||0;
     const svcs=(b.finalservice||b.service).split(',').map(s=>s.trim()).filter(Boolean);
-    svcs.forEach(s=>{if(!map[phone].allServices.includes(s))map[phone].allServices.push(s);});
+    svcs.forEach(s=>{if(!map[key].allServices.includes(s))map[key].allServices.push(s);});
   });
   return map;
 }
